@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Day5Task extends Task {
+
     private final Map<Integer, List<Character>> crates;
 
     private final List<List<Integer>> instructions;
