@@ -15,7 +15,7 @@ public class Day1Test {
     @Test
     public void testTask1() {
         Day1Solution solution = Day1Solution
-                .builder(readInput(INPUT_FILE))
+                .builder(readInput())
                 .solve(Day1Solution.Task.FIND_MAX_CALORIE_COUNT)
                 .build();
 
@@ -25,15 +25,15 @@ public class Day1Test {
     @Test
     public void testTask2() {
         Day1Solution solution = Day1Solution
-                .builder(readInput(INPUT_FILE))
+                .builder(readInput())
                 .solve(Day1Solution.Task.FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS)
                 .build();
 
         System.out.printf("Result for task 2 is: %s", solution.getResult());
     }
 
-    private List<List<Integer>> readInput(String testFile) {
-        Scanner scanner = openFile(this.getClass(), testFile);
+    private List<List<Integer>> readInput() {
+        Scanner scanner = openFile(this.getClass(), Day1Test.INPUT_FILE);
 
         List<List<Integer>> elfsFoodList = new ArrayList<>();
         List<Integer> currentElfFood = new ArrayList<>();
