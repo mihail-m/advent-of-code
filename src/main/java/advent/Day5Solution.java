@@ -38,7 +38,7 @@ public class Day5Solution {
             @Override
             public void solve(Day5Solution solution) {
                 solution.result = findTopCrates(solution.crates, solution.instructions, (from, to, amount) -> {
-                   to.addAll(from.subList(from.size() - amount, from.size()));
+                    to.addAll(from.subList(from.size() - amount, from.size()));
                     for (int removed = 0; removed < amount; removed++) {
                         from.remove(from.size() - 1);
                     }
