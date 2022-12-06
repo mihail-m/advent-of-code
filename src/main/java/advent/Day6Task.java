@@ -68,6 +68,7 @@ public class Day6Task extends Task {
             }
         }
     }
+
     public static Builder<Day6Task> builder(String input) {
         return new Builder<>(() -> new Day6Task(input));
     }

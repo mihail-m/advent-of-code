@@ -55,6 +55,7 @@ public class Day4Task extends Task {
                    || (intervals.get(2) <= intervals.get(1) && intervals.get(1) <= intervals.get(3));
         }
     }
+
     public static Builder<Day4Task> builder(List<List<Integer>> input) {
         return new Builder<>(() -> new Day4Task(input));
     }
