@@ -6,11 +6,42 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class Day1Test {
 
     private static final String INPUT_FILE = "input.txt";
+
+    private static final List<List<Integer>> SAMPLE_INPUT = List.of(
+            List.of(1000, 2000, 3000),
+            List.of(4000),
+            List.of(5000, 6000),
+            List.of(7000, 8000, 9000),
+            List.of(10000)
+    );
+
+    private static final int SAMPLE_RESULT_TASK_1 = 24000;
+
+    private static final int SAMPLE_RESULT_TASK_2 = 45000;
+
+    @Test
+    public void sampleTestTask1() {
+        Day1Solution solution = Day1Solution.builder(SAMPLE_INPUT)
+                .solve(Day1Solution.Task.FIND_MAX_CALORIE_COUNT)
+                .build();
+
+        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, solution.getResult());
+    }
+
+    @Test
+    public void sampleTestTask2() {
+        Day1Solution solution = Day1Solution.builder(SAMPLE_INPUT)
+                .solve(Day1Solution.Task.FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS)
+                .build();
+
+        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, solution.getResult());
+    }
 
     @Test
     public void testTask1() {
