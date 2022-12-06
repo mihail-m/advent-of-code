@@ -1,8 +1,6 @@
 package advent;
 
 import java.util.HashMap;
-import java.util.List;
-import java.util.HashSet;
 import java.util.Map;
 
 public class Day6Solution {
@@ -37,7 +35,7 @@ public class Day6Solution {
         public abstract void solve(Day6Solution solution);
 
         private static int findKDifferentConsecutiveLetters(String text, int k) {
-            HashMap<Character, Integer> lettersMap = new HashMap<>();
+            Map<Character, Integer> lettersMap = new HashMap<>();
             for (int index = 0; index < k - 1; index++) {
                 addLetter(lettersMap, text.charAt(index));
             }

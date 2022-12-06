@@ -3,6 +3,7 @@ package advent;
 import java.util.List;
 
 public class Day1Solution {
+
     private final List<List<Integer>> elfsFoodList;
 
     private int result;
