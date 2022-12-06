@@ -14,6 +14,7 @@ public class Day2Test {
     private static final String INPUT_FILE = "input.txt";
 
     private static final List<String> SAMPLE_INPUT = List.of("A Y", "B X", "C Z");
+
     private static final int SAMPLE_RESULT_TASK_1 = 15;
 
     private static final int SAMPLE_RESULT_TASK_2 = 12;
