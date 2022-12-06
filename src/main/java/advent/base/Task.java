@@ -9,12 +9,14 @@ public class Task {
     }
 
     public static class Builder<T extends Task> {
+
         private final T solution;
-        public Builder(Callable<T> solutionConstructor) {
+
+        public Builder(Callable<T> taskConstructor) {
             try {
-                this.solution = solutionConstructor.call();
+                this.solution = taskConstructor.call();
             } catch (Throwable t) {
-                throw new IllegalArgumentException("Solution constructor error.", t);
+                throw new IllegalArgumentException("Task constructor error.", t);
             }
         }
 
