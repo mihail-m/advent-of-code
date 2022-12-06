@@ -27,36 +27,36 @@ public class Day3Test {
 
     @Test
     public void sampleTestTask1() {
-        Day3Solution solution = Day3Solution.builder(SAMPLE_INPUT)
-                .solve(Day3Solution.Task.FIND_DUPLICATE_ITEMS_SUM)
+        Day3Task task = Day3Task.builder(SAMPLE_INPUT)
+                .solve(Day3Task.Solution.FIND_DUPLICATE_ITEMS_SUM)
                 .build();
 
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, solution.getResult());
+        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, task.getResult());
     }
 
     @Test
     public void sampleTestTask2() {
-        Day3Solution solution = Day3Solution.builder(SAMPLE_INPUT)
-                .solve(Day3Solution.Task.FIND_BADGES_SUM)
+        Day3Task task = Day3Task.builder(SAMPLE_INPUT)
+                .solve(Day3Task.Solution.FIND_BADGES_SUM)
                 .build();
 
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, solution.getResult());
+        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, task.getResult());
     }
 
     @Test
     public void testTask1() {
-        Day3Solution solution = Day3Solution.builder(readInput())
-                .solve(Day3Solution.Task.FIND_DUPLICATE_ITEMS_SUM)
+        Day3Task task = Day3Task.builder(readInput())
+                .solve(Day3Task.Solution.FIND_DUPLICATE_ITEMS_SUM)
                 .build();
 
 
-        System.out.printf("Result for task 1 is: %s", solution.getResult());
+        System.out.printf("Result for task 1 is: %s", task.getResult());
     }
 
     @Test
     public void testTask2() {
-        Day3Solution solution = Day3Solution.builder(readInput())
-                .solve(Day3Solution.Task.FIND_BADGES_SUM)
+        Day3Task solution = Day3Task.builder(readInput())
+                .solve(Day3Task.Solution.FIND_BADGES_SUM)
                 .build();
 
 

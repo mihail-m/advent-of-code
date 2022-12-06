@@ -28,40 +28,40 @@ public class Day4Test {
 
     @Test
     public void sampleTestTask1() {
-        Day4Solution solution = Day4Solution.builder(SAMPLE_INPUT)
-                .solve(Day4Solution.Task.FIND_COMPLETELY_COVERED_INTERVALS_COUNT)
+        Day4Task task = Day4Task.builder(SAMPLE_INPUT)
+                .solve(Day4Task.Solution.FIND_COMPLETELY_COVERED_INTERVALS_COUNT)
                 .build();
 
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, solution.getResult());
+        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, task.getResult());
     }
 
     @Test
     public void sampleTestTask2() {
-        Day4Solution solution = Day4Solution.builder(SAMPLE_INPUT)
-                .solve(Day4Solution.Task.FIND_OVERLAPPING_INTERVALS_COUNT)
+        Day4Task task = Day4Task.builder(SAMPLE_INPUT)
+                .solve(Day4Task.Solution.FIND_OVERLAPPING_INTERVALS_COUNT)
                 .build();
 
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, solution.getResult());
+        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, task.getResult());
     }
 
     @Test
     public void testTask1() {
-        Day4Solution solution = Day4Solution
+        Day4Task task = Day4Task
                 .builder(readInput())
-                .solve(Day4Solution.Task.FIND_COMPLETELY_COVERED_INTERVALS_COUNT)
+                .solve(Day4Task.Solution.FIND_COMPLETELY_COVERED_INTERVALS_COUNT)
                 .build();
 
-        System.out.printf("Result for task 1 is: %s", solution.getResult());
+        System.out.printf("Result for task 1 is: %s", task.getResult());
     }
 
     @Test
     public void testTask2() {
-        Day4Solution solution = Day4Solution
+        Day4Task task = Day4Task
                 .builder(readInput())
-                .solve(Day4Solution.Task.FIND_OVERLAPPING_INTERVALS_COUNT)
+                .solve(Day4Task.Solution.FIND_OVERLAPPING_INTERVALS_COUNT)
                 .build();
 
-        System.out.printf("Result for task 2 is: %s", solution.getResult());
+        System.out.printf("Result for task 2 is: %s", task.getResult());
     }
 
     private List<List<Integer>> readInput() {

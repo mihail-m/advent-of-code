@@ -1,14 +1,16 @@
 package advent;
 
+import advent.base.Task;
+
 import java.util.List;
 
-public class Day4Solution {
+public class Day4Task extends Task {
 
     private final List<List<Integer>> intervalPairs;
 
     private int result;
 
-    private Day4Solution(List<List<Integer>> intervalPairs) {
+    private Day4Task(List<List<Integer>> intervalPairs) {
         this.result = 0;
         this.intervalPairs = intervalPairs;
     }
@@ -17,25 +19,25 @@ public class Day4Solution {
         return this.result;
     }
 
-    public enum Task {
+    public enum Solution implements SolutionStrategy<Day4Task> {
         FIND_COMPLETELY_COVERED_INTERVALS_COUNT {
             @Override
-            public void solve(Day4Solution solution) {
+            public void solve(Day4Task solution) {
                 solution.result = (int) solution.intervalPairs.stream()
-                        .filter(Task::intervalCompletelyCovered)
+                        .filter(Solution::intervalCompletelyCovered)
                         .count();
             }
         },
         FIND_OVERLAPPING_INTERVALS_COUNT {
             @Override
-            public void solve(Day4Solution solution) {
+            public void solve(Day4Task solution) {
                 solution.result = (int) solution.intervalPairs.stream()
-                        .filter(Task::intervalOverlap)
+                        .filter(Solution::intervalOverlap)
                         .count();
             }
         };
 
-        public abstract void solve(Day4Solution solution);
+        public abstract void solve(Day4Task solution);
 
         private static boolean intervalCompletelyCovered(List<Integer> intervals) {
             assert intervals.size() == 4;
@@ -53,24 +55,7 @@ public class Day4Solution {
                    || (intervals.get(2) <= intervals.get(1) && intervals.get(1) <= intervals.get(3));
         }
     }
-
-    public static class Builder {
-        private final Day4Solution solution;
-        private Builder(List<List<Integer>> input) {
-            this.solution = new Day4Solution(input);
-        }
-
-        public Builder solve(Task task) {
-            task.solve(this.solution);
-            return this;
-        }
-
-        public Day4Solution build() {
-            return this.solution;
-        }
-    }
-
-    public static Builder builder(List<List<Integer>> input) {
-        return new Builder(input);
+    public static Builder<Day4Task> builder(List<List<Integer>> input) {
+        return new Builder<>(() -> new Day4Task(input));
     }
 }

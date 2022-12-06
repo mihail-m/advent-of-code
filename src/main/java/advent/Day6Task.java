@@ -1,15 +1,17 @@
 package advent;
 
+import advent.base.Task;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class Day6Solution {
+public class Day6Task extends Task {
 
     private final String buffer;
 
     private int result;
 
-    private Day6Solution(String buffer) {
+    private Day6Task(String buffer) {
         this.buffer = buffer;
         this.result = 0;
     }
@@ -18,21 +20,21 @@ public class Day6Solution {
         return this.result;
     }
 
-    public enum Task {
+    public enum Solution implements SolutionStrategy<Day6Task> {
         FIND_FIRST_4_CONSECUTIVE_DIFFERENT_CHARACTERS {
             @Override
-            public void solve(Day6Solution solution) {
+            public void solve(Day6Task solution) {
                 solution.result = findKDifferentConsecutiveLetters(solution.buffer, 4);
             }
         },
         FIND_FIRST_14_CONSECUTIVE_DIFFERENT_CHARACTERS {
             @Override
-            public void solve(Day6Solution solution) {
+            public void solve(Day6Task solution) {
                 solution.result = findKDifferentConsecutiveLetters(solution.buffer, 14);
             }
         };
 
-        public abstract void solve(Day6Solution solution);
+        public abstract void solve(Day6Task solution);
 
         private static int findKDifferentConsecutiveLetters(String text, int k) {
             Map<Character, Integer> lettersMap = new HashMap<>();
@@ -66,24 +68,7 @@ public class Day6Solution {
             }
         }
     }
-
-    public static class Builder {
-        private final Day6Solution solution;
-        private Builder(String input) {
-            this.solution = new Day6Solution(input);
-        }
-
-        public Builder solve(Task task) {
-            task.solve(this.solution);
-            return this;
-        }
-
-        public Day6Solution build() {
-            return this.solution;
-        }
-    }
-
-    public static Builder builder(String input) {
-        return new Builder(input);
+    public static Builder<Day6Task> builder(String input) {
+        return new Builder<>(() -> new Day6Task(input));
     }
 }

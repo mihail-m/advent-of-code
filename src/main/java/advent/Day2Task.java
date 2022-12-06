@@ -1,15 +1,17 @@
 package advent;
 
+import advent.base.Task;
+
 import java.util.List;
 import java.util.Map;
 
-public class Day2Solution {
+public class Day2Task extends Task {
 
     private final List<String> matches;
 
     private int result;
 
-    private Day2Solution(List<String> matches) {
+    private Day2Task(List<String> matches) {
         this.matches = matches;
         this.result = 0;
     }
@@ -18,10 +20,10 @@ public class Day2Solution {
         return this.result;
     }
 
-    public enum Task {
+    public enum Solution implements SolutionStrategy<Day2Task> {
         FIND_GUESSED_STRATEGY_SCORE {
             @Override
-            public void solve(Day2Solution solution) {
+            public void solve(Day2Task solution) {
                 Map<String, Integer> matchPoints = Map.of(
                         "A X", 4,
                         "A Y", 8,
@@ -41,7 +43,7 @@ public class Day2Solution {
         },
         FIND_ACTUAL_STRATEGY_SCORE {
             @Override
-            public void solve(Day2Solution solution) {
+            public void solve(Day2Task solution) {
                 Map<String, Integer> matchPoints = Map.of(
                         "A X", 3,
                         "A Y", 4,
@@ -60,26 +62,10 @@ public class Day2Solution {
             }
         };
 
-        public abstract void solve(Day2Solution solution);
+        public abstract void solve(Day2Task solution);
     }
 
-    public static class Builder {
-        private final Day2Solution solution;
-        private Builder(List<String> input) {
-            this.solution = new Day2Solution(input);
-        }
-
-        public Builder solve(Task task) {
-            task.solve(this.solution);
-            return this;
-        }
-
-        public Day2Solution build() {
-            return this.solution;
-        }
-    }
-
-    public static Builder builder(List<String> input) {
-        return new Builder(input);
+    public static Builder<Day2Task> builder(List<String> input) {
+        return new Builder<>(() -> new Day2Task(input));
     }
 }

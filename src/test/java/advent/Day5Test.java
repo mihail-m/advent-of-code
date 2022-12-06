@@ -35,42 +35,42 @@ public class Day5Test {
 
     @Test
     public void sampleTestTask1() {
-        Day5Solution solution = Day5Solution.builder(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS)
-                .solve(Day5Solution.Task.FIND_TOP_CRATES_CRATE_MOVER_9000)
+        Day5Task task = Day5Task.builder(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS)
+                .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9000)
                 .build();
 
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, solution.getResult());
+        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, task.getResult());
     }
 
     @Test
     public void sampleTestTask2() {
-        Day5Solution solution = Day5Solution.builder(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS)
-                .solve(Day5Solution.Task.FIND_TOP_CRATES_CRATE_MOVER_9001)
+        Day5Task task = Day5Task.builder(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS)
+                .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9001)
                 .build();
 
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, solution.getResult());
+        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, task.getResult());
     }
 
     @Test
     public void testTask1() {
         Scanner scanner = openFile(this.getClass(), INPUT_FILE);
 
-        Day5Solution solution = Day5Solution.builder(readCrates(scanner), readInstructions(scanner))
-                .solve(Day5Solution.Task.FIND_TOP_CRATES_CRATE_MOVER_9000)
+        Day5Task task = Day5Task.builder(readCrates(scanner), readInstructions(scanner))
+                .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9000)
                 .build();
 
-        System.out.printf("Result for task 1 is: %s", solution.getResult());
+        System.out.printf("Result for task 1 is: %s", task.getResult());
     }
 
     @Test
     public void testTask2() {
         Scanner scanner = openFile(this.getClass(), INPUT_FILE);
 
-        Day5Solution solution = Day5Solution.builder(readCrates(scanner), readInstructions(scanner))
-                .solve(Day5Solution.Task.FIND_TOP_CRATES_CRATE_MOVER_9001)
+        Day5Task task = Day5Task.builder(readCrates(scanner), readInstructions(scanner))
+                .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9001)
                 .build();
 
-        System.out.printf("Result for task 2 is: %s", solution.getResult());
+        System.out.printf("Result for task 2 is: %s", task.getResult());
     }
 
 

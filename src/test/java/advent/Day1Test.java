@@ -27,40 +27,40 @@ public class Day1Test {
 
     @Test
     public void sampleTestTask1() {
-        Day1Solution solution = Day1Solution.builder(SAMPLE_INPUT)
-                .solve(Day1Solution.Task.FIND_MAX_CALORIE_COUNT)
+        Day1Task task = Day1Task.builder(SAMPLE_INPUT)
+                .solve(Day1Task.Solution.FIND_MAX_CALORIE_COUNT)
                 .build();
 
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, solution.getResult());
+        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, task.getResult());
     }
 
     @Test
     public void sampleTestTask2() {
-        Day1Solution solution = Day1Solution.builder(SAMPLE_INPUT)
-                .solve(Day1Solution.Task.FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS)
+        Day1Task task = Day1Task.builder(SAMPLE_INPUT)
+                .solve(Day1Task.Solution.FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS)
                 .build();
 
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, solution.getResult());
+        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, task.getResult());
     }
 
     @Test
     public void testTask1() {
-        Day1Solution solution = Day1Solution
+        Day1Task task = Day1Task
                 .builder(readInput())
-                .solve(Day1Solution.Task.FIND_MAX_CALORIE_COUNT)
+                .solve(Day1Task.Solution.FIND_MAX_CALORIE_COUNT)
                 .build();
 
-        System.out.printf("Result for task 1 is: %s", solution.getResult());
+        System.out.printf("Result for task 1 is: %s", task.getResult());
     }
 
     @Test
     public void testTask2() {
-        Day1Solution solution = Day1Solution
+        Day1Task task = Day1Task
                 .builder(readInput())
-                .solve(Day1Solution.Task.FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS)
+                .solve(Day1Task.Solution.FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS)
                 .build();
 
-        System.out.printf("Result for task 2 is: %s", solution.getResult());
+        System.out.printf("Result for task 2 is: %s", task.getResult());
     }
 
     private List<List<Integer>> readInput() {

@@ -1,17 +1,19 @@
 package advent;
 
+import advent.base.Task;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Day3Solution {
+public class Day3Task extends Task {
 
     private final List<String> rucksacks;
 
     private int result;
 
-    private Day3Solution(List<String> matches) {
+    private Day3Task(List<String> matches) {
         this.rucksacks = matches;
         this.result = 0;
     }
@@ -20,10 +22,10 @@ public class Day3Solution {
         return this.result;
     }
 
-    public enum Task {
+    public enum Solution implements SolutionStrategy<Day3Task> {
         FIND_DUPLICATE_ITEMS_SUM {
             @Override
-            public void solve(Day3Solution solution) {
+            public void solve(Day3Task solution) {
                 solution.result = solution.rucksacks.stream()
                         .mapToInt(rucksack -> findMatchingItemValue(List.of(
                                 rucksack.substring(0, rucksack.length() / 2),
@@ -33,7 +35,7 @@ public class Day3Solution {
         },
         FIND_BADGES_SUM {
             @Override
-            public void solve(Day3Solution solution) {
+            public void solve(Day3Task solution) {
                 for (int index = 0; index < solution.rucksacks.size(); index += 3) {
                     solution.result += findMatchingItemValue(List.of(
                             solution.rucksacks.get(index),
@@ -44,7 +46,7 @@ public class Day3Solution {
             }
         };
 
-        public abstract void solve(Day3Solution solution);
+        public abstract void solve(Day3Task solution);
 
         private static int findMatchingItemValue(List<String> itemGroups) {
             List<Set<Character>> itemSets = new ArrayList<>();
@@ -70,23 +72,7 @@ public class Day3Solution {
         }
     }
 
-    public static class Builder {
-        private final Day3Solution solution;
-        private Builder(List<String> input) {
-            this.solution = new Day3Solution(input);
-        }
-
-        public Builder solve(Task task) {
-            task.solve(this.solution);
-            return this;
-        }
-
-        public Day3Solution build() {
-            return this.solution;
-        }
-    }
-
-    public static Builder builder(List<String> input) {
-        return new Builder(input);
+    public static Builder<Day3Task> builder(List<String> input) {
+        return new Builder<>(() -> new Day3Task(input));
     }
 }

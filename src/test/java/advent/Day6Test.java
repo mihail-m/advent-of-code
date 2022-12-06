@@ -25,42 +25,42 @@ public class Day6Test {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4})
     public void sampleTestTask1(int testNumber) {
-        Day6Solution solution = Day6Solution.builder(SAMPLE_INPUTS[testNumber])
-                .solve(Day6Solution.Task.FIND_FIRST_4_CONSECUTIVE_DIFFERENT_CHARACTERS)
+        Day6Task task = Day6Task.builder(SAMPLE_INPUTS[testNumber])
+                .solve(Day6Task.Solution.FIND_FIRST_4_CONSECUTIVE_DIFFERENT_CHARACTERS)
                 .build();
 
-        Assertions.assertEquals(SAMPLE_RESULTS_TASK_1[testNumber], solution.getResult());
+        Assertions.assertEquals(SAMPLE_RESULTS_TASK_1[testNumber], task.getResult());
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4})
     public void sampleTestTask2(int testNumber) {
-        Day6Solution solution = Day6Solution.builder(SAMPLE_INPUTS[testNumber])
-                .solve(Day6Solution.Task.FIND_FIRST_14_CONSECUTIVE_DIFFERENT_CHARACTERS)
+        Day6Task task = Day6Task.builder(SAMPLE_INPUTS[testNumber])
+                .solve(Day6Task.Solution.FIND_FIRST_14_CONSECUTIVE_DIFFERENT_CHARACTERS)
                 .build();
 
-        Assertions.assertEquals(SAMPLE_RESULTS_TASK_2[testNumber], solution.getResult());
+        Assertions.assertEquals(SAMPLE_RESULTS_TASK_2[testNumber], task.getResult());
     }
 
     @Test
     public void testTask1() {
-        Day6Solution solution = Day6Solution.builder(readInput())
-                .solve(Day6Solution.Task.FIND_FIRST_4_CONSECUTIVE_DIFFERENT_CHARACTERS)
+        Day6Task task = Day6Task.builder(readInput())
+                .solve(Day6Task.Solution.FIND_FIRST_4_CONSECUTIVE_DIFFERENT_CHARACTERS)
                 .build();
 
-        System.out.printf("Result for task 1 is: %s", solution.getResult());
+        System.out.printf("Result for task 1 is: %s", task.getResult());
     }
 
     @Test
     public void testTask2() {
-        Day6Solution solution = Day6Solution.builder(readInput())
-                .solve(Day6Solution.Task.FIND_FIRST_14_CONSECUTIVE_DIFFERENT_CHARACTERS)
+        Day6Task task = Day6Task.builder(readInput())
+                .solve(Day6Task.Solution.FIND_FIRST_14_CONSECUTIVE_DIFFERENT_CHARACTERS)
                 .build();
 
-        System.out.printf("Result for task 2 is: %s", solution.getResult());
+        System.out.printf("Result for task 2 is: %s", task.getResult());
     }
 
     private String readInput() {
-        return openFile(this.getClass(), Day6Test.INPUT_FILE).nextLine();
+        return openFile(this.getClass(), INPUT_FILE).nextLine();
     }
 }

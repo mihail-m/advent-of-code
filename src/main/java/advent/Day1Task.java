@@ -1,14 +1,16 @@
 package advent;
 
+import advent.base.Task;
+
 import java.util.List;
 
-public class Day1Solution {
+public class Day1Task extends Task {
 
     private final List<List<Integer>> elfsFoodList;
 
     private int result;
 
-    private Day1Solution(List<List<Integer>> elfsFoodList) {
+    private Day1Task(List<List<Integer>> elfsFoodList) {
         this.result = 0;
         this.elfsFoodList = elfsFoodList;
     }
@@ -17,10 +19,10 @@ public class Day1Solution {
         return this.result;
     }
 
-    public enum Task {
+    public enum Solution implements SolutionStrategy<Day1Task> {
         FIND_MAX_CALORIE_COUNT {
             @Override
-            public void solve(Day1Solution solution) {
+            public void solve(Day1Task solution) {
                 solution.result = solution.elfsFoodList.stream()
                         .mapToInt(foodList -> foodList.stream()
                                 .mapToInt(food -> food)
@@ -31,7 +33,7 @@ public class Day1Solution {
         },
         FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS {
             @Override
-            public void solve(Day1Solution solution) {
+            public void solve(Day1Task solution) {
                 solution.result = solution.elfsFoodList.stream()
                         .mapToInt(foodList -> foodList.stream()
                                 .mapToInt(food -> food)
@@ -43,26 +45,10 @@ public class Day1Solution {
             }
         };
 
-        public abstract void solve(Day1Solution solution);
+        public abstract void solve(Day1Task solution);
     }
 
-    public static class Builder {
-        private final Day1Solution solution;
-        private Builder(List<List<Integer>> input) {
-            this.solution = new Day1Solution(input);
-        }
-
-        public Builder solve(Task task) {
-            task.solve(this.solution);
-            return this;
-        }
-
-        public Day1Solution build() {
-            return this.solution;
-        }
-    }
-
-    public static Builder builder(List<List<Integer>> input) {
-        return new Builder(input);
+    public static Builder<Day1Task> builder(List<List<Integer>> input) {
+        return new Builder<>(() -> new Day1Task(input));
     }
 }

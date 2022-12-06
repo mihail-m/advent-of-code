@@ -21,40 +21,40 @@ public class Day2Test {
 
     @Test
     public void sampleTestTask1() {
-        Day2Solution solution = Day2Solution.builder(SAMPLE_INPUT)
-                .solve(Day2Solution.Task.FIND_GUESSED_STRATEGY_SCORE)
+        Day2Task task = Day2Task.builder(SAMPLE_INPUT)
+                .solve(Day2Task.Solution.FIND_GUESSED_STRATEGY_SCORE)
                 .build();
 
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, solution.getResult());
+        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, task.getResult());
     }
 
     @Test
     public void sampleTestTask2() {
-        Day2Solution solution = Day2Solution.builder(SAMPLE_INPUT)
-                .solve(Day2Solution.Task.FIND_ACTUAL_STRATEGY_SCORE)
+        Day2Task task = Day2Task.builder(SAMPLE_INPUT)
+                .solve(Day2Task.Solution.FIND_ACTUAL_STRATEGY_SCORE)
                 .build();
 
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, solution.getResult());
+        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, task.getResult());
     }
 
     @Test
     public void testTask1() {
-        Day2Solution solution = Day2Solution.builder(readInput())
-                .solve(Day2Solution.Task.FIND_GUESSED_STRATEGY_SCORE)
+        Day2Task task = Day2Task.builder(readInput())
+                .solve(Day2Task.Solution.FIND_GUESSED_STRATEGY_SCORE)
                 .build();
 
 
-        System.out.printf("Result for task 1 is: %s", solution.getResult());
+        System.out.printf("Result for task 1 is: %s", task.getResult());
     }
 
     @Test
     public void testTask2() {
-        Day2Solution solution = Day2Solution.builder(readInput())
-                .solve(Day2Solution.Task.FIND_ACTUAL_STRATEGY_SCORE)
+        Day2Task task = Day2Task.builder(readInput())
+                .solve(Day2Task.Solution.FIND_ACTUAL_STRATEGY_SCORE)
                 .build();
 
 
-        System.out.printf("Result for task 2 is: %s", solution.getResult());
+        System.out.printf("Result for task 2 is: %s", task.getResult());
     }
 
     private List<String> readInput() {
