@@ -46,7 +46,7 @@ public class Day7Test {
     @Test
     public void sampleTestTask1() {
         Day7Task task = Day7Task.builder(SAMPLE_INPUT)
-                .solve(Day7Task.Solution.FIND_DIRECTORIES_UNDER_10000_SIZE_SUM)
+                .solve(Day7Task.Solution.FIND_DIRECTORIES_UNDER_100000_SIZE_SUM)
                 .build();
 
         Assertions.assertEquals(SAMPLE_RESULT_TASK_1, task.getResult());
@@ -64,7 +64,7 @@ public class Day7Test {
     @Test
     public void testTask1() {
         Day7Task task = Day7Task.builder(readInput())
-                .solve(Day7Task.Solution.FIND_DIRECTORIES_UNDER_10000_SIZE_SUM)
+                .solve(Day7Task.Solution.FIND_DIRECTORIES_UNDER_100000_SIZE_SUM)
                 .build();
 
         System.out.printf("Result for task 1 is: %s", task.getResult());;

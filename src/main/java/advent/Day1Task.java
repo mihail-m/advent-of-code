@@ -20,6 +20,7 @@ public class Day1Task extends Task {
     }
 
     public enum Solution implements SolutionStrategy<Day1Task> {
+
         FIND_MAX_CALORIE_COUNT {
             @Override
             public void solve(Day1Task solution) {
@@ -31,6 +32,7 @@ public class Day1Task extends Task {
                         .orElse(0);
             }
         },
+
         FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS {
             @Override
             public void solve(Day1Task solution) {

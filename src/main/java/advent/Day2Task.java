@@ -21,6 +21,7 @@ public class Day2Task extends Task {
     }
 
     public enum Solution implements SolutionStrategy<Day2Task> {
+
         FIND_GUESSED_STRATEGY_SCORE {
             @Override
             public void solve(Day2Task solution) {
@@ -41,6 +42,7 @@ public class Day2Task extends Task {
                         .sum();
             }
         },
+
         FIND_ACTUAL_STRATEGY_SCORE {
             @Override
             public void solve(Day2Task solution) {

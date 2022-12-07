@@ -25,7 +25,8 @@ public class Day7Task extends Task {
     }
 
     public enum Solution implements SolutionStrategy<Day7Task> {
-        FIND_DIRECTORIES_UNDER_10000_SIZE_SUM {
+
+        FIND_DIRECTORIES_UNDER_100000_SIZE_SUM {
             @Override
             public void solve(Day7Task solution) {
                 buildFileSystemTree(solution.consoleOutput)
@@ -36,6 +37,7 @@ public class Day7Task extends Task {
                         });
             }
         },
+
         FIND_DIRECTORY_TO_DELETE {
             @Override
             public void solve(Day7Task solution) {

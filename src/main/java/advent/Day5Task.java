@@ -26,6 +26,7 @@ public class Day5Task extends Task {
     }
 
     public enum Solution implements SolutionStrategy<Day5Task> {
+
         FIND_TOP_CRATES_CRATE_MOVER_9000 {
             @Override
             public void solve(Day5Task solution) {
@@ -37,6 +38,7 @@ public class Day5Task extends Task {
                 });
             }
         },
+
         FIND_TOP_CRATES_CRATE_MOVER_9001 {
             @Override
             public void solve(Day5Task solution) {

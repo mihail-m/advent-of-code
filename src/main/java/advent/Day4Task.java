@@ -20,6 +20,7 @@ public class Day4Task extends Task {
     }
 
     public enum Solution implements SolutionStrategy<Day4Task> {
+
         FIND_COMPLETELY_COVERED_INTERVALS_COUNT {
             @Override
             public void solve(Day4Task solution) {
@@ -28,6 +29,7 @@ public class Day4Task extends Task {
                         .count();
             }
         },
+
         FIND_OVERLAPPING_INTERVALS_COUNT {
             @Override
             public void solve(Day4Task solution) {

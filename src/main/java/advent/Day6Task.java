@@ -21,12 +21,14 @@ public class Day6Task extends Task {
     }
 
     public enum Solution implements SolutionStrategy<Day6Task> {
+
         FIND_FIRST_4_CONSECUTIVE_DIFFERENT_CHARACTERS {
             @Override
             public void solve(Day6Task solution) {
                 solution.result = findKDifferentConsecutiveLetters(solution.buffer, 4);
             }
         },
+
         FIND_FIRST_14_CONSECUTIVE_DIFFERENT_CHARACTERS {
             @Override
             public void solve(Day6Task solution) {
