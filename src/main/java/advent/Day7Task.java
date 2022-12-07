@@ -21,7 +21,7 @@ public class Day7Task extends Task {
     }
 
     public long getResult() {
-        return result;
+        return this.result;
     }
 
     public enum Solution implements SolutionStrategy<Day7Task> {
@@ -127,31 +127,32 @@ public class Day7Task extends Task {
 
             private static final String DIR = "dir";
 
-            public String name;
-
-            public long size;
-            public Set<String> subDirectories;
-            public Set<String> files;
-
             public String parent;
 
+            public String name;
+            public long size;
+
+            public Set<String> files;
+            public Set<String> subDirectories;
+
             public Dir(String name, String parent) {
+                this.parent = parent;
+
                 this.name = name;
                 this.size = 0;
-                this.subDirectories = new HashSet<>();
+
                 this.files = new HashSet<>();
-                this.parent = parent;
+                this.subDirectories = new HashSet<>();
             }
 
             public void addContent(List<String> content) {
                 for (String item : content) {
                     String[] info = item.split(" ");
-
                     if (DIR.equals(info[0])) {
                         this.subDirectories.add(getDirName(this.name, info[1]));
                     } else if (!this.files.contains(info[1])){
-                        this.size += Integer.parseInt(info[0]);
                         this.files.add(info[1]);
+                        this.size += Integer.parseInt(info[0]);
                     }
                 }
                 content.clear();

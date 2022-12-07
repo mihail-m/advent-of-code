@@ -76,7 +76,7 @@ public class Day7Test {
                 .solve(Day7Task.Solution.FIND_DIRECTORY_TO_DELETE)
                 .build();
 
-        System.out.printf("Result for task 1 is: %s", task.getResult());;
+        System.out.printf("Result for task 2 is: %s", task.getResult());;
     }
 
     private List<String> readInput() {
