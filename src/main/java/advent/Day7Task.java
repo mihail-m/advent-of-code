@@ -1,13 +1,13 @@
 package advent;
 
-import advent.base.Task;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import advent.base.Task;
 
 public class Day7Task extends Task<List<String>, Long> {
 

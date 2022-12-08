@@ -1,8 +1,8 @@
 package advent;
 
-import advent.base.Task;
-
 import java.util.Arrays;
+
+import advent.base.Task;
 
 public class Day8Task extends Task<Integer[][], Integer> {
 

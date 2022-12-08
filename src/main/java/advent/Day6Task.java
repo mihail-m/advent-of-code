@@ -1,9 +1,9 @@
 package advent;
 
-import advent.base.Task;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import advent.base.Task;
 
 public class Day6Task extends Task<String, Integer> {
 

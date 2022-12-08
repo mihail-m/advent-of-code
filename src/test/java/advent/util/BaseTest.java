@@ -1,10 +1,11 @@
 package advent.util;
 
-import advent.base.Task;
-import org.junit.jupiter.api.Assertions;
-
 import static advent.util.TestUtil.RESULT_MESSAGE;
 import static advent.util.TestUtil.postAndValidateResult;
+
+import org.junit.jupiter.api.Assertions;
+
+import advent.base.Task;
 
 public abstract class BaseTest<TaskType extends Task<?, SolutionType>, SolutionType> {
 
