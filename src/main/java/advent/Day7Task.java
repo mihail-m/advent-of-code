@@ -67,7 +67,7 @@ public class Day7Task extends Task<List<String>, Long> {
             List<String> content = new ArrayList<>();
             for (String line : consoleOutput) {
                 if (line.charAt(0) == COMMAND_SYMBOL) {
-                    currentDir.addContent(content);
+                    currentDir.addAndClearContent(content);
 
                     String[] info = line.split(" ");
                     if (info[1].equals(CD_COMMAND)) {
@@ -77,7 +77,7 @@ public class Day7Task extends Task<List<String>, Long> {
                     content.add(line);
                 }
             }
-            currentDir.addContent(content);
+            currentDir.addAndClearContent(content);
 
             addSubDirectoriesSizes(fileSystem.get(ROOT_DIR), fileSystem);
 
@@ -135,7 +135,7 @@ public class Day7Task extends Task<List<String>, Long> {
                 this.subDirectories = new HashSet<>();
             }
 
-            public void addContent(List<String> content) {
+            public void addAndClearContent(List<String> content) {
                 for (String item : content) {
                     String[] info = item.split(" ");
                     if (DIR.equals(info[0])) {
