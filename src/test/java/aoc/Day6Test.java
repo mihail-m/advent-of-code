@@ -1,12 +1,12 @@
-package advent;
+package aoc;
 
-import static advent.util.TestUtil.openFile;
+import static aoc.util.TestUtil.openFile;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import advent.util.BaseTest;
+import aoc.util.BaseTest;
 
 public class Day6Test extends BaseTest<Day6Task, Integer> {
 

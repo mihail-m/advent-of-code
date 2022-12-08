@@ -1,8 +1,8 @@
-package advent;
+package aoc;
 
 import java.util.Arrays;
 
-import advent.base.Task;
+import aoc.base.Task;
 
 public class Day8Task extends Task<Integer[][], Integer> {
 

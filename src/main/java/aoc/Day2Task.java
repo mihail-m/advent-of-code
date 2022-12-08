@@ -1,9 +1,9 @@
-package advent;
+package aoc;
 
 import java.util.List;
 import java.util.Map;
 
-import advent.base.Task;
+import aoc.base.Task;
 
 public class Day2Task extends Task<List<String>, Integer> {
 

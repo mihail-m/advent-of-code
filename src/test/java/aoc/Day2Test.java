@@ -1,6 +1,6 @@
-package advent;
+package aoc;
 
-import static advent.util.TestUtil.openFile;
+import static aoc.util.TestUtil.openFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
-import advent.util.BaseTest;
+import aoc.util.BaseTest;
 
 public class Day2Test extends BaseTest<Day2Task, Integer> {
 

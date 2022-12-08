@@ -1,11 +1,11 @@
-package advent.util;
+package aoc.util;
 
-import static advent.util.TestUtil.RESULT_MESSAGE;
-import static advent.util.TestUtil.postAndValidateResult;
+import static aoc.util.TestUtil.RESULT_MESSAGE;
+import static aoc.util.TestUtil.postAndValidateResult;
 
 import org.junit.jupiter.api.Assertions;
 
-import advent.base.Task;
+import aoc.base.Task;
 
 public abstract class BaseTest<TaskType extends Task<?, SolutionType>, SolutionType> {
 

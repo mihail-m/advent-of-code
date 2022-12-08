@@ -1,4 +1,4 @@
-package advent.base;
+package aoc.base;
 
 import java.util.concurrent.Callable;
 

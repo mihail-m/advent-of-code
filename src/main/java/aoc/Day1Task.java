@@ -1,8 +1,8 @@
-package advent;
+package aoc;
 
 import java.util.List;
 
-import advent.base.Task;
+import aoc.base.Task;
 
 public class Day1Task extends Task<List<List<Integer>>, Integer> {
 
