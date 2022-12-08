@@ -12,12 +12,14 @@ public class Day8Task extends Task<Integer[][], Integer> {
     }
 
     public enum Solution implements SolutionStrategy<Day8Task> {
+
         FIND_VISIBLE_TREES {
             @Override
             public void solve(Day8Task task) {
                 task.result = traverseAllDirections(task.input);
             }
         },
+
         FIND_MAX_VIEWING_SCORE {
             @Override
             public void solve(Day8Task task) {
