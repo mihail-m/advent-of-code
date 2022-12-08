@@ -1,17 +1,17 @@
 package advent;
 
 import static advent.util.TestUtil.openFile;
-import static advent.util.TestUtil.postAndValidateResult;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class Day4Test {
+import advent.util.BaseTest;
+
+public class Day4Test extends BaseTest<Day4Task, Integer> {
 
     static final List<List<Integer>> SAMPLE_INPUT = List.of(
             List.of(2, 4, 6 ,8),
@@ -27,42 +27,30 @@ public class Day4Test {
 
     @Test
     public void sampleTestTask1() {
-        Day4Task task = Day4Task.builder(SAMPLE_INPUT)
+        sampleTestTask1(Day4Task.builder(SAMPLE_INPUT)
                 .solve(Day4Task.Solution.FIND_COMPLETELY_COVERED_INTERVALS_COUNT)
-                .build();
-
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, task.getResult());
+                .build(), SAMPLE_RESULT_TASK_1);
     }
 
     @Test
     public void sampleTestTask2() {
-        Day4Task task = Day4Task.builder(SAMPLE_INPUT)
+        sampleTestTask2(Day4Task.builder(SAMPLE_INPUT)
                 .solve(Day4Task.Solution.FIND_OVERLAPPING_INTERVALS_COUNT)
-                .build();
-
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, task.getResult());
+                .build(), SAMPLE_RESULT_TASK_2);
     }
 
     @Test
     public void testTask1() {
-        Day4Task task = Day4Task
-                .builder(readInput())
+        testTask1(Day4Task.builder(readInput())
                 .solve(Day4Task.Solution.FIND_COMPLETELY_COVERED_INTERVALS_COUNT)
-                .build();
-
-        System.out.printf("Result for task 1 is: %s", task.getResult());
-        postAndValidateResult(this.getClass(), task.getResult().toString(), "1");
+                .build());
     }
 
     @Test
     public void testTask2() {
-        Day4Task task = Day4Task
-                .builder(readInput())
+        testTask2(Day4Task.builder(readInput())
                 .solve(Day4Task.Solution.FIND_OVERLAPPING_INTERVALS_COUNT)
-                .build();
-
-        System.out.printf("Result for task 2 is: %s", task.getResult());
-        postAndValidateResult(this.getClass(), task.getResult().toString(), "2");
+                .build());
     }
 
     private List<List<Integer>> readInput() {

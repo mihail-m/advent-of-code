@@ -1,16 +1,16 @@
 package advent;
 
 import static advent.util.TestUtil.openFile;
-import static advent.util.TestUtil.postAndValidateResult;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class Day1Test {
+import advent.util.BaseTest;
+
+public class Day1Test extends BaseTest<Day1Task, Integer> {
 
     private static final List<List<Integer>> SAMPLE_INPUT = List.of(
             List.of(1000, 2000, 3000),
@@ -26,42 +26,30 @@ public class Day1Test {
 
     @Test
     public void sampleTestTask1() {
-        Day1Task task = Day1Task.builder(SAMPLE_INPUT)
+        sampleTestTask1(Day1Task.builder(SAMPLE_INPUT)
                 .solve(Day1Task.Solution.FIND_MAX_CALORIE_COUNT)
-                .build();
-
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, task.getResult());
+                .build(), SAMPLE_RESULT_TASK_1);
     }
 
     @Test
     public void sampleTestTask2() {
-        Day1Task task = Day1Task.builder(SAMPLE_INPUT)
+        sampleTestTask2(Day1Task.builder(SAMPLE_INPUT)
                 .solve(Day1Task.Solution.FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS)
-                .build();
-
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, task.getResult());
+                .build(), SAMPLE_RESULT_TASK_2);
     }
 
     @Test
     public void testTask1() {
-        Day1Task task = Day1Task
-                .builder(readInput())
+        testTask1(Day1Task.builder(readInput())
                 .solve(Day1Task.Solution.FIND_MAX_CALORIE_COUNT)
-                .build();
-
-        System.out.printf("Result for task 1 is: %s", task.getResult());
-        postAndValidateResult(this.getClass(), task.getResult().toString(), "1");
+                .build());
     }
 
     @Test
     public void testTask2() {
-        Day1Task task = Day1Task
-                .builder(readInput())
+        testTask2(Day1Task.builder(readInput())
                 .solve(Day1Task.Solution.FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS)
-                .build();
-
-        System.out.printf("Result for task 2 is: %s", task.getResult());
-        postAndValidateResult(this.getClass(), task.getResult().toString(), "2");
+                .build());
     }
 
     private List<List<Integer>> readInput() {

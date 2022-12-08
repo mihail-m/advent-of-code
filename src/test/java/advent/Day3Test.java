@@ -1,16 +1,16 @@
 package advent;
 
 import static advent.util.TestUtil.openFile;
-import static advent.util.TestUtil.postAndValidateResult;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class Day3Test {
+import advent.util.BaseTest;
+
+public class Day3Test extends BaseTest<Day3Task, Integer> {
 
     private static final List<String> SAMPLE_INPUT = List.of(
             "vJrwpWtwJgWrhcsFMMfFFhFp",
@@ -26,40 +26,30 @@ public class Day3Test {
 
     @Test
     public void sampleTestTask1() {
-        Day3Task task = Day3Task.builder(SAMPLE_INPUT)
+        sampleTestTask1(Day3Task.builder(SAMPLE_INPUT)
                 .solve(Day3Task.Solution.FIND_DUPLICATE_ITEMS_SUM)
-                .build();
-
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, task.getResult());
+                .build(), SAMPLE_RESULT_TASK_1);
     }
 
     @Test
     public void sampleTestTask2() {
-        Day3Task task = Day3Task.builder(SAMPLE_INPUT)
+        sampleTestTask2(Day3Task.builder(SAMPLE_INPUT)
                 .solve(Day3Task.Solution.FIND_BADGES_SUM)
-                .build();
-
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, task.getResult());
+                .build(), SAMPLE_RESULT_TASK_2);
     }
 
     @Test
     public void testTask1() {
-        Day3Task task = Day3Task.builder(readInput())
+        testTask1(Day3Task.builder(readInput())
                 .solve(Day3Task.Solution.FIND_DUPLICATE_ITEMS_SUM)
-                .build();
-
-        System.out.printf("Result for task 1 is: %s", task.getResult());
-        postAndValidateResult(this.getClass(), task.getResult().toString(), "1");
+                .build());
     }
 
     @Test
     public void testTask2() {
-        Day3Task task = Day3Task.builder(readInput())
+        testTask2(Day3Task.builder(readInput())
                 .solve(Day3Task.Solution.FIND_BADGES_SUM)
-                .build();
-
-        System.out.printf("Result for task 2 is: %s", task.getResult());
-        postAndValidateResult(this.getClass(), task.getResult().toString(), "2");
+                .build());
     }
 
     private List<String> readInput() {

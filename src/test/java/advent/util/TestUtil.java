@@ -26,9 +26,11 @@ public class TestUtil {
 
     public static final String INPUT_FILE = "input.txt";
 
+    public static final String RESULT_MESSAGE = "Result for task %s is: %s \n";
+
     private static final String AOC_URL_BASE = "https://adventofcode.com/2022/day/%s/";
-    private static final String AOC_URL_INPUT = AOC_URL_BASE + "answer";
-    private static final String AOC_URL_ANSWER = AOC_URL_BASE + "input";
+    private static final String AOC_URL_INPUT = AOC_URL_BASE + "input";
+    private static final String AOC_URL_ANSWER = AOC_URL_BASE + "answer";
 
     private static final String COOKIE_KEY = "cookie";
     private static final String COOKIE_VALUE = "session=" + System.getProperty("session", "no_session");
@@ -55,6 +57,8 @@ public class TestUtil {
             return;
         }
 
+        System.out.println("Posting result for validation...");
+
         HttpPost request = new HttpPost(String.format(AOC_URL_ANSWER, getDay(caller)));
         addHeaders(request);
 
@@ -70,6 +74,7 @@ public class TestUtil {
 
         String response = getRequestResponse(request);
         Assertions.assertTrue(response.contains(CORRECT_ANSWER) || response.contains(ALREADY_SOLVED));
+        System.out.println("Answer is correct!");
     }
 
     private static Scanner createScanner(String fileLocation, Class<?> caller, boolean retry) {
@@ -92,6 +97,8 @@ public class TestUtil {
             return;
         }
 
+        System.out.println("Retrieving input information...");
+
         HttpGet request = new HttpGet(String.format(AOC_URL_INPUT, getDay(caller)));
         addHeaders(request);
 
@@ -102,10 +109,10 @@ public class TestUtil {
         String fileLocation = TESTS_LOCATION_PREFIX + "day" + day + "/" + INPUT_FILE;
         try {
             Files.write(Paths.get(fileLocation), input.getBytes(), StandardOpenOption.CREATE);
+            System.out.println("Input file saved at: " + fileLocation);
         } catch (IOException ex) {
             System.out.println("Error creating input file." + ex.getMessage());
         }
-
     }
 
     private static String getRequestResponse(HttpUriRequest request) {
@@ -131,13 +138,15 @@ public class TestUtil {
     }
 
     private static String getDay(Class<?> caller) {
-        return getDayFolder(caller).replace("day", "");
+        return getDayFolder(caller)
+                .replace("day", "")
+                .replace("/", "");
     }
 
     private static boolean noCookie() {
         if (COOKIE_VALUE.equals(NO_COOKIE)) {
-            System.out.println("No session provided. Skipping input file creation.");
-            System.out.println("To create input file run test with: -Dsession=... option provided.");
+            System.out.println("No session provided.");
+            System.out.println("To create input file and/or post result run test with: -Dsession=... option provided.");
             return true;
         }
         return false;

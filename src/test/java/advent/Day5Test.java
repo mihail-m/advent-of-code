@@ -1,7 +1,6 @@
 package advent;
 
 import static advent.util.TestUtil.openFile;
-import static advent.util.TestUtil.postAndValidateResult;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,10 +10,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class Day5Test {
+import advent.util.BaseTest;
+
+public class Day5Test extends BaseTest<Day5Task, String> {
 
     static final Map<Integer, List<Character>> SAMPLE_INPUT = Map.of(
             1, List.of('Z', 'N'),
@@ -34,40 +34,30 @@ public class Day5Test {
 
     @Test
     public void sampleTestTask1() {
-        Day5Task task = Day5Task.builder(new Day5Task.Input(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS))
+        sampleTestTask1(Day5Task.builder(new Day5Task.Input(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS))
                 .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9000)
-                .build();
-
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, task.getResult());
+                .build(), SAMPLE_RESULT_TASK_1);
     }
 
     @Test
     public void sampleTestTask2() {
-        Day5Task task = Day5Task.builder(new Day5Task.Input(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS))
+        sampleTestTask2(Day5Task.builder(new Day5Task.Input(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS))
                 .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9001)
-                .build();
-
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, task.getResult());
+                .build(), SAMPLE_RESULT_TASK_2);
     }
 
     @Test
     public void testTask1() {
-        Day5Task task = Day5Task.builder(readInput())
+        testTask1(Day5Task.builder(readInput())
                 .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9000)
-                .build();
-
-        System.out.printf("Result for task 1 is: %s", task.getResult());
-        postAndValidateResult(this.getClass(), task.getResult(), "1");
+                .build());
     }
 
     @Test
     public void testTask2() {
-        Day5Task task = Day5Task.builder(readInput())
+        testTask2(Day5Task.builder(readInput())
                 .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9001)
-                .build();
-
-        System.out.printf("Result for task 2 is: %s", task.getResult());
-        postAndValidateResult(this.getClass(), task.getResult(), "2");
+                .build());
     }
 
     private Day5Task.Input readInput() {

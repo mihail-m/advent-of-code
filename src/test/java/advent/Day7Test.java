@@ -1,16 +1,16 @@
 package advent;
 
 import static advent.util.TestUtil.openFile;
-import static advent.util.TestUtil.postAndValidateResult;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class Day7Test {
+import advent.util.BaseTest;
+
+public class Day7Test  extends BaseTest<Day7Task, Long> {
 
     private static final List<String> SAMPLE_INPUT = List.of(
             "$ cd /",
@@ -38,46 +38,36 @@ public class Day7Test {
             "7214296 k"
     );
 
-    private static final int SAMPLE_RESULT_TASK_1 = 95437;
+    private static final long SAMPLE_RESULT_TASK_1 = 95437;
 
-    private static final int SAMPLE_RESULT_TASK_2 = 24933642;
+    private static final long SAMPLE_RESULT_TASK_2 = 24933642;
 
     @Test
     public void sampleTestTask1() {
-        Day7Task task = Day7Task.builder(SAMPLE_INPUT)
+        sampleTestTask1(Day7Task.builder(SAMPLE_INPUT)
                 .solve(Day7Task.Solution.FIND_DIRECTORIES_UNDER_100000_SIZE_SUM)
-                .build();
-
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, task.getResult());
+                .build(), SAMPLE_RESULT_TASK_1);
     }
 
     @Test
     public void sampleTestTask2() {
-        Day7Task task = Day7Task.builder(SAMPLE_INPUT)
+        sampleTestTask2(Day7Task.builder(SAMPLE_INPUT)
                 .solve(Day7Task.Solution.FIND_DIRECTORY_TO_DELETE)
-                .build();
-
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, task.getResult());
+                .build(), SAMPLE_RESULT_TASK_2);
     }
 
     @Test
     public void testTask1() {
-        Day7Task task = Day7Task.builder(readInput())
+        testTask1(Day7Task.builder(readInput())
                 .solve(Day7Task.Solution.FIND_DIRECTORIES_UNDER_100000_SIZE_SUM)
-                .build();
-
-        System.out.printf("Result for task 1 is: %s", task.getResult());
-        postAndValidateResult(this.getClass(), task.getResult().toString(), "1");
+                .build());
     }
 
     @Test
     public void testTask2() {
-        Day7Task task = Day7Task.builder(readInput())
+        testTask2(Day7Task.builder(readInput())
                 .solve(Day7Task.Solution.FIND_DIRECTORY_TO_DELETE)
-                .build();
-
-        System.out.printf("Result for task 2 is: %s", task.getResult());
-        postAndValidateResult(this.getClass(), task.getResult().toString(), "2");
+                .build());
     }
 
     private List<String> readInput() {

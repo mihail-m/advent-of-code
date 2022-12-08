@@ -1,16 +1,16 @@
 package advent;
 
 import static advent.util.TestUtil.openFile;
-import static advent.util.TestUtil.postAndValidateResult;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class Day2Test {
+import advent.util.BaseTest;
+
+public class Day2Test extends BaseTest<Day2Task, Integer> {
 
     private static final List<String> SAMPLE_INPUT = List.of("A Y", "B X", "C Z");
 
@@ -20,40 +20,30 @@ public class Day2Test {
 
     @Test
     public void sampleTestTask1() {
-        Day2Task task = Day2Task.builder(SAMPLE_INPUT)
+        sampleTestTask1(Day2Task.builder(SAMPLE_INPUT)
                 .solve(Day2Task.Solution.FIND_GUESSED_STRATEGY_SCORE)
-                .build();
-
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_1, task.getResult());
+                .build(), SAMPLE_RESULT_TASK_1);
     }
 
     @Test
     public void sampleTestTask2() {
-        Day2Task task = Day2Task.builder(SAMPLE_INPUT)
+        sampleTestTask2(Day2Task.builder(SAMPLE_INPUT)
                 .solve(Day2Task.Solution.FIND_ACTUAL_STRATEGY_SCORE)
-                .build();
-
-        Assertions.assertEquals(SAMPLE_RESULT_TASK_2, task.getResult());
+                .build(), SAMPLE_RESULT_TASK_2);
     }
 
     @Test
     public void testTask1() {
-        Day2Task task = Day2Task.builder(readInput())
+        testTask1(Day2Task.builder(readInput())
                 .solve(Day2Task.Solution.FIND_GUESSED_STRATEGY_SCORE)
-                .build();
-
-        System.out.printf("Result for task 1 is: %s", task.getResult());
-        postAndValidateResult(this.getClass(), task.getResult().toString(), "1");
+                .build());
     }
 
     @Test
     public void testTask2() {
-        Day2Task task = Day2Task.builder(readInput())
+        testTask2(Day2Task.builder(readInput())
                 .solve(Day2Task.Solution.FIND_ACTUAL_STRATEGY_SCORE)
-                .build();
-
-        System.out.printf("Result for task 2 is: %s", task.getResult());
-        postAndValidateResult(this.getClass(), task.getResult().toString(), "2");
+                .build());
     }
 
     private List<String> readInput() {
