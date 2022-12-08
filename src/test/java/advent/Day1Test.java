@@ -1,5 +1,6 @@
 package advent;
 
+import static advent.util.TestUtil.INPUT_FILE;
 import static advent.util.TestUtil.openFile;
 
 import java.util.ArrayList;
@@ -10,8 +11,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class Day1Test {
-
-    private static final String INPUT_FILE = "input.txt";
 
     private static final List<List<Integer>> SAMPLE_INPUT = List.of(
             List.of(1000, 2000, 3000),
@@ -64,7 +63,7 @@ public class Day1Test {
     }
 
     private List<List<Integer>> readInput() {
-        Scanner scanner = openFile(this.getClass(), Day1Test.INPUT_FILE);
+        Scanner scanner = openFile(this.getClass(), INPUT_FILE);
 
         List<List<Integer>> elfsFoodList = new ArrayList<>();
         List<Integer> currentElfFood = new ArrayList<>();

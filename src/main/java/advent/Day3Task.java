@@ -7,19 +7,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Day3Task extends Task {
+public class Day3Task extends Task<List<String>, Integer> {
 
-    private final List<String> rucksacks;
-
-    private int result;
-
-    private Day3Task(List<String> matches) {
-        this.rucksacks = matches;
+    private Day3Task(List<String> input) {
+        super(input);
         this.result = 0;
-    }
-
-    public int getResult() {
-        return this.result;
     }
 
     public enum Solution implements SolutionStrategy<Day3Task> {
@@ -27,7 +19,7 @@ public class Day3Task extends Task {
         FIND_DUPLICATE_ITEMS_SUM {
             @Override
             public void solve(Day3Task solution) {
-                solution.result = solution.rucksacks.stream()
+                solution.result = solution.input.stream()
                         .mapToInt(rucksack -> findMatchingItemValue(List.of(
                                 rucksack.substring(0, rucksack.length() / 2),
                                 rucksack.substring(rucksack.length() / 2))))
@@ -37,11 +29,11 @@ public class Day3Task extends Task {
         FIND_BADGES_SUM {
             @Override
             public void solve(Day3Task solution) {
-                for (int index = 0; index < solution.rucksacks.size(); index += 3) {
+                for (int index = 0; index < solution.input.size(); index += 3) {
                     solution.result += findMatchingItemValue(List.of(
-                            solution.rucksacks.get(index),
-                            solution.rucksacks.get(index + 1),
-                            solution.rucksacks.get(index + 2)
+                            solution.input.get(index),
+                            solution.input.get(index + 1),
+                            solution.input.get(index + 2)
                     ));
                 }
             }

@@ -1,12 +1,15 @@
 package advent.util;
 
+import org.junit.jupiter.api.Assertions;
+
 import java.io.File;
 import java.util.Scanner;
 
-import org.junit.jupiter.api.Assertions;
 public class TestUtil {
 
-    static final String TESTS_LOCATION_PREFIX = "src/test/java/input/files/";
+    public static final String INPUT_FILE = "input.txt";
+
+    private static final String TESTS_LOCATION_PREFIX = "src/test/java/input/files/";
 
     public static Scanner openFile(Class<?> caller, String fileName) {
         String dayFolder = caller.getSimpleName()
@@ -23,4 +26,6 @@ public class TestUtil {
         }
         return scanner;
     }
+
+
 }

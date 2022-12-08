@@ -5,19 +5,11 @@ import advent.base.Task;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Day6Task extends Task {
+public class Day6Task extends Task<String, Integer> {
 
-    private final String buffer;
-
-    private int result;
-
-    private Day6Task(String buffer) {
-        this.buffer = buffer;
+    private Day6Task(String input) {
+        super(input);
         this.result = 0;
-    }
-
-    public int getResult() {
-        return this.result;
     }
 
     public enum Solution implements SolutionStrategy<Day6Task> {
@@ -25,14 +17,14 @@ public class Day6Task extends Task {
         FIND_FIRST_4_CONSECUTIVE_DIFFERENT_CHARACTERS {
             @Override
             public void solve(Day6Task solution) {
-                solution.result = findKDifferentConsecutiveLetters(solution.buffer, 4);
+                solution.result = findKDifferentConsecutiveLetters(solution.input, 4);
             }
         },
 
         FIND_FIRST_14_CONSECUTIVE_DIFFERENT_CHARACTERS {
             @Override
             public void solve(Day6Task solution) {
-                solution.result = findKDifferentConsecutiveLetters(solution.buffer, 14);
+                solution.result = findKDifferentConsecutiveLetters(solution.input, 14);
             }
         };
 

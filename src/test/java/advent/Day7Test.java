@@ -1,5 +1,6 @@
 package advent;
 
+import static advent.util.TestUtil.INPUT_FILE;
 import static advent.util.TestUtil.openFile;
 
 import java.util.ArrayList;
@@ -10,8 +11,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class Day7Test {
-
-    private static final String INPUT_FILE = "input.txt";
 
     private static final List<String> SAMPLE_INPUT = List.of(
             "$ cd /",

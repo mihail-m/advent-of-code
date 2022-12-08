@@ -4,19 +4,11 @@ import advent.base.Task;
 
 import java.util.List;
 
-public class Day4Task extends Task {
+public class Day4Task extends Task<List<List<Integer>>, Integer> {
 
-    private final List<List<Integer>> intervalPairs;
-
-    private int result;
-
-    private Day4Task(List<List<Integer>> intervalPairs) {
+    private Day4Task(List<List<Integer>> input) {
+        super(input);
         this.result = 0;
-        this.intervalPairs = intervalPairs;
-    }
-
-    public int getResult() {
-        return this.result;
     }
 
     public enum Solution implements SolutionStrategy<Day4Task> {
@@ -24,7 +16,7 @@ public class Day4Task extends Task {
         FIND_COMPLETELY_COVERED_INTERVALS_COUNT {
             @Override
             public void solve(Day4Task solution) {
-                solution.result = (int) solution.intervalPairs.stream()
+                solution.result = (int) solution.input.stream()
                         .filter(Solution::intervalCompletelyCovered)
                         .count();
             }
@@ -33,7 +25,7 @@ public class Day4Task extends Task {
         FIND_OVERLAPPING_INTERVALS_COUNT {
             @Override
             public void solve(Day4Task solution) {
-                solution.result = (int) solution.intervalPairs.stream()
+                solution.result = (int) solution.input.stream()
                         .filter(Solution::intervalOverlap)
                         .count();
             }

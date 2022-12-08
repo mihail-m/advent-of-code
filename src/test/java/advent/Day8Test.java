@@ -1,24 +1,22 @@
 package advent;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import static advent.util.TestUtil.INPUT_FILE;
+import static advent.util.TestUtil.openFile;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static advent.util.TestUtil.openFile;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class Day8Test {
-
-    private static final String INPUT_FILE = "input.txt";
-
-    private static final int[][] SAMPLE_INPUT = new int[][]{
-            {3, 0, 3, 7, 3},
-            {2, 5, 5, 1, 2},
-            {6, 5, 3, 3, 2},
-            {3, 3, 5, 4, 9},
-            {3, 5 ,3, 9, 0}};
+    private static final Integer[][] SAMPLE_INPUT = new Integer[][]{
+            new Integer[]{3, 0, 3, 7, 3},
+            new Integer[]{2, 5, 5, 1, 2},
+            new Integer[]{6, 5, 3, 3, 2},
+            new Integer[]{3, 3, 5, 4, 9},
+            new Integer[]{3, 5 ,3, 9, 0}};
 
     private static final int SAMPLE_RESULT_TASK_1 = 21;
 
@@ -60,7 +58,7 @@ public class Day8Test {
         System.out.printf("Result for task 2 is: %s", task.getResult());;
     }
 
-    private int[][] readInput() {
+    private Integer[][] readInput() {
         Scanner scanner = openFile(this.getClass(), INPUT_FILE);
 
         List<String> input = new ArrayList<>();
@@ -68,7 +66,7 @@ public class Day8Test {
             input.add(scanner.nextLine());
         }
 
-        int[][] map = new int[input.size()][input.get(0).length()];
+        Integer[][] map = new Integer[input.size()][input.get(0).length()];
         for (int i = 0; i < input.size(); i++) {
             for (int j = 0; j < input.get(i).length(); j++) {
                 map[i][j] = Integer.parseInt(String.valueOf(input.get(i).charAt(j)));

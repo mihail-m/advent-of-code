@@ -5,19 +5,11 @@ import advent.base.Task;
 import java.util.List;
 import java.util.Map;
 
-public class Day2Task extends Task {
+public class Day2Task extends Task<List<String>, Integer> {
 
-    private final List<String> matches;
-
-    private int result;
-
-    private Day2Task(List<String> matches) {
-        this.matches = matches;
+    private Day2Task(List<String> input) {
+        super(input);
         this.result = 0;
-    }
-
-    public int getResult() {
-        return this.result;
     }
 
     public enum Solution implements SolutionStrategy<Day2Task> {
@@ -37,7 +29,7 @@ public class Day2Task extends Task {
                         "C Z", 6
                 );
 
-                solution.result = solution.matches.stream()
+                solution.result = solution.input.stream()
                         .mapToInt(matchPoints::get)
                         .sum();
             }
@@ -58,7 +50,7 @@ public class Day2Task extends Task {
                         "C Z", 7
                 );
 
-                solution.result = solution.matches.stream()
+                solution.result = solution.input.stream()
                         .mapToInt(matchPoints::get)
                         .sum();
             }

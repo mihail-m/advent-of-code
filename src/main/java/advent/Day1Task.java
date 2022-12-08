@@ -4,19 +4,11 @@ import advent.base.Task;
 
 import java.util.List;
 
-public class Day1Task extends Task {
+public class Day1Task extends Task<List<List<Integer>>, Integer> {
 
-    private final List<List<Integer>> elfsFoodList;
-
-    private int result;
-
-    private Day1Task(List<List<Integer>> elfsFoodList) {
+    private Day1Task(List<List<Integer>> input) {
+        super(input);
         this.result = 0;
-        this.elfsFoodList = elfsFoodList;
-    }
-
-    public int getResult() {
-        return this.result;
     }
 
     public enum Solution implements SolutionStrategy<Day1Task> {
@@ -24,7 +16,7 @@ public class Day1Task extends Task {
         FIND_MAX_CALORIE_COUNT {
             @Override
             public void solve(Day1Task solution) {
-                solution.result = solution.elfsFoodList.stream()
+                solution.result = solution.input.stream()
                         .mapToInt(foodList -> foodList.stream()
                                 .mapToInt(food -> food)
                                 .sum())
@@ -36,12 +28,12 @@ public class Day1Task extends Task {
         FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS {
             @Override
             public void solve(Day1Task solution) {
-                solution.result = solution.elfsFoodList.stream()
+                solution.result = solution.input.stream()
                         .mapToInt(foodList -> foodList.stream()
                                 .mapToInt(food -> food)
                                 .sum())
                         .sorted()
-                        .skip(solution.elfsFoodList.size() - 3)
+                        .skip(solution.input.size() - 3)
                         .limit(3)
                         .sum();
             }

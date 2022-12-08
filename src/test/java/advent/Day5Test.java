@@ -1,5 +1,6 @@
 package advent;
 
+import static advent.util.TestUtil.INPUT_FILE;
 import static advent.util.TestUtil.openFile;
 
 import java.util.ArrayList;
@@ -14,8 +15,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class Day5Test {
-
-    private static final String INPUT_FILE = "input.txt";
 
     static final Map<Integer, List<Character>> SAMPLE_INPUT = Map.of(
             1, List.of('Z', 'N'),
@@ -35,7 +34,7 @@ public class Day5Test {
 
     @Test
     public void sampleTestTask1() {
-        Day5Task task = Day5Task.builder(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS)
+        Day5Task task = Day5Task.builder(new Day5Task.Input(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS))
                 .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9000)
                 .build();
 
@@ -44,7 +43,7 @@ public class Day5Test {
 
     @Test
     public void sampleTestTask2() {
-        Day5Task task = Day5Task.builder(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS)
+        Day5Task task = Day5Task.builder(new Day5Task.Input(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS))
                 .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9001)
                 .build();
 
@@ -53,9 +52,7 @@ public class Day5Test {
 
     @Test
     public void testTask1() {
-        Scanner scanner = openFile(this.getClass(), INPUT_FILE);
-
-        Day5Task task = Day5Task.builder(readCrates(scanner), readInstructions(scanner))
+        Day5Task task = Day5Task.builder(readInput())
                 .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9000)
                 .build();
 
@@ -64,15 +61,17 @@ public class Day5Test {
 
     @Test
     public void testTask2() {
-        Scanner scanner = openFile(this.getClass(), INPUT_FILE);
-
-        Day5Task task = Day5Task.builder(readCrates(scanner), readInstructions(scanner))
+        Day5Task task = Day5Task.builder(readInput())
                 .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9001)
                 .build();
 
         System.out.printf("Result for task 2 is: %s", task.getResult());
     }
 
+    private Day5Task.Input readInput() {
+        Scanner scanner = openFile(this.getClass(), INPUT_FILE);
+        return new Day5Task.Input(readCrates(scanner), readInstructions(scanner));
+    }
 
     private Map<Integer, List<Character>> readCrates(Scanner scanner) {
         Map<Integer, List<Character>> crates = new HashMap<>();

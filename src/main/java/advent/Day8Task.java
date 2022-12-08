@@ -4,36 +4,28 @@ import advent.base.Task;
 
 import java.util.Arrays;
 
-public class Day8Task extends Task {
+public class Day8Task extends Task<Integer[][], Integer> {
 
-    private int[][] map;
-
-    private int result;
-
-    private Day8Task(int[][] map) {
-        this.map = map;
+    private Day8Task(Integer[][] input) {
+        super(input);
         this.result = 0;
-    }
-
-    public int getResult() {
-        return result;
     }
 
     public enum Solution implements SolutionStrategy<Day8Task> {
         FIND_VISIBLE_TREES {
             @Override
             public void solve(Day8Task solution) {
-                solution.result = traverseAllDirections(solution.map);
+                solution.result = traverseAllDirections(solution.input);
             }
         },
         FIND_MAX_VIEWING_SCORE {
             @Override
             public void solve(Day8Task solution) {
-                solution.result = getAllViewingScores(solution.map);
+                solution.result = getAllViewingScores(solution.input);
             }
         };
 
-        private static int traverseAllDirections(int[][] map) {
+        private static int traverseAllDirections(Integer[][] map) {
             boolean[][] visible = new boolean[map.length][map[0].length];
             for (boolean[] booleans : visible) {
                 Arrays.fill(booleans, false);
@@ -84,7 +76,7 @@ public class Day8Task extends Task {
             return result;
         }
 
-        private static int getAllViewingScores(int[][] map) {
+        private static int getAllViewingScores(Integer[][] map) {
             int result = 0;
 
             for (int i = 0; i < map.length; i++) {
@@ -118,7 +110,7 @@ public class Day8Task extends Task {
         }
     }
 
-    public static Builder<Day8Task> builder(int[][] map) {
+    public static Builder<Day8Task> builder(Integer[][] map) {
         return new Builder<>(() -> new Day8Task(map));
     }
 }

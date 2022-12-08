@@ -9,19 +9,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class Day7Task extends Task {
+public class Day7Task extends Task<List<String>, Long> {
 
-    private final List<String> consoleOutput;
-
-    private long result;
-
-    private Day7Task(List<String> consoleOutput) {
+    private Day7Task(List<String> input) {
+        super(input);
         this.result = 0L;
-        this.consoleOutput = consoleOutput;
-    }
-
-    public long getResult() {
-        return this.result;
     }
 
     public enum Solution implements SolutionStrategy<Day7Task> {
@@ -29,7 +21,7 @@ public class Day7Task extends Task {
         FIND_DIRECTORIES_UNDER_100000_SIZE_SUM {
             @Override
             public void solve(Day7Task solution) {
-                buildFileSystemTree(solution.consoleOutput)
+                buildFileSystemTree(solution.input)
                         .forEach((__, dir) -> {
                             if (dir.size <= 100000L) {
                                 solution.result += dir.size;
@@ -41,7 +33,7 @@ public class Day7Task extends Task {
         FIND_DIRECTORY_TO_DELETE {
             @Override
             public void solve(Day7Task solution) {
-                Map<String, Dir> fileSystem = buildFileSystemTree(solution.consoleOutput);
+                Map<String, Dir> fileSystem = buildFileSystemTree(solution.input);
 
                 long totalTakenSpace = fileSystem.get(ROOT_DIR).size;
 

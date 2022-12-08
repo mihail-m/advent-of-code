@@ -1,5 +1,6 @@
 package advent;
 
+import static advent.util.TestUtil.INPUT_FILE;
 import static advent.util.TestUtil.openFile;
 
 import org.junit.jupiter.api.Assertions;
@@ -8,8 +9,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class Day6Test {
-
-    private static final String INPUT_FILE = "input.txt";
 
     private static final String[] SAMPLE_INPUTS = {
             "mjqjpqmgbljsphdztnvjfqwrcgsmlb",

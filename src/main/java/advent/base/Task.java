@@ -2,13 +2,25 @@ package advent.base;
 
 import java.util.concurrent.Callable;
 
-public class Task {
+public class Task<InputType, ResultType> {
 
-    public interface SolutionStrategy<T extends Task> {
-        public void solve(T solution);
+    protected InputType input;
+
+    protected ResultType result;
+
+    protected Task(InputType input) {
+        this.input = input;
     }
 
-    public static class Builder<T extends Task> {
+    public ResultType getResult() {
+        return this.result;
+    }
+
+    public interface SolutionStrategy<T extends Task<?, ?>> {
+        void solve(T solution);
+    }
+
+    public static class Builder<T extends Task<?, ?>> {
 
         private final T solution;
 

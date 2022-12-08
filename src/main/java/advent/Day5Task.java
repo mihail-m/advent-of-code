@@ -7,22 +7,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Day5Task extends Task {
+public class Day5Task extends Task<Day5Task.Input, String> {
 
-    private final Map<Integer, List<Character>> crates;
-
-    private final List<List<Integer>> instructions;
-
-    private String result;
-
-    private Day5Task(Map<Integer, List<Character>> crates, List<List<Integer>> instructions) {
+    private Day5Task(Input input) {
+        super(input);
         this.result = "";
-        this.crates = crates;
-        this.instructions = instructions;
     }
 
-    public String getResult() {
-        return this.result;
+    public static class Input {
+        public Map<Integer, List<Character>> crates;
+        public List<List<Integer>> instructions;
+
+        public Input(Map<Integer, List<Character>> crates, List<List<Integer>> instructions) {
+            Map<Integer, List<Character>> cratesMutable = new HashMap<>();
+            crates.forEach((key, list) -> cratesMutable.put(key, new ArrayList<>(list)));
+            this.crates = cratesMutable;
+            this.instructions = instructions;
+        }
     }
 
     public enum Solution implements SolutionStrategy<Day5Task> {
@@ -30,7 +31,7 @@ public class Day5Task extends Task {
         FIND_TOP_CRATES_CRATE_MOVER_9000 {
             @Override
             public void solve(Day5Task solution) {
-                solution.result = findTopCrates(solution.crates, solution.instructions, (from, to, amount) -> {
+                solution.result = findTopCrates(solution.input.crates, solution.input.instructions, (from, to, amount) -> {
                     for (int moved = 0; moved < amount; moved++) {
                         to.add(from.get(from.size() - 1));
                         from.remove(from.size() - 1);
@@ -42,7 +43,7 @@ public class Day5Task extends Task {
         FIND_TOP_CRATES_CRATE_MOVER_9001 {
             @Override
             public void solve(Day5Task solution) {
-                solution.result = findTopCrates(solution.crates, solution.instructions, (from, to, amount) -> {
+                solution.result = findTopCrates(solution.input.crates, solution.input.instructions, (from, to, amount) -> {
                     to.addAll(from.subList(from.size() - amount, from.size()));
                     for (int removed = 0; removed < amount; removed++) {
                         from.remove(from.size() - 1);
@@ -74,10 +75,7 @@ public class Day5Task extends Task {
         }
     }
 
-    public static Builder<Day5Task> builder(Map<Integer, List<Character>> crates, List<List<Integer>> instructions) {
-        Map<Integer, List<Character>> cratesMutable = new HashMap<>();
-        crates.forEach((key, list) -> cratesMutable.put(key, new ArrayList<>(list)));
-
-        return new Builder<>(() -> new Day5Task(cratesMutable, instructions));
+    public static Builder<Day5Task> builder(Input input) {
+        return new Builder<>(() -> new Day5Task(input));
     }
 }
