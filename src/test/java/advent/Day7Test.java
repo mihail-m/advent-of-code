@@ -1,7 +1,7 @@
 package advent;
 
-import static advent.util.TestUtil.INPUT_FILE;
 import static advent.util.TestUtil.openFile;
+import static advent.util.TestUtil.postAndValidateResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,8 @@ public class Day7Test {
                 .solve(Day7Task.Solution.FIND_DIRECTORIES_UNDER_100000_SIZE_SUM)
                 .build();
 
-        System.out.printf("Result for task 1 is: %s", task.getResult());;
+        System.out.printf("Result for task 1 is: %s", task.getResult());
+        postAndValidateResult(this.getClass(), task.getResult().toString(), "1");
     }
 
     @Test
@@ -75,11 +76,12 @@ public class Day7Test {
                 .solve(Day7Task.Solution.FIND_DIRECTORY_TO_DELETE)
                 .build();
 
-        System.out.printf("Result for task 2 is: %s", task.getResult());;
+        System.out.printf("Result for task 2 is: %s", task.getResult());
+        postAndValidateResult(this.getClass(), task.getResult().toString(), "2");
     }
 
     private List<String> readInput() {
-        Scanner scanner = openFile(this.getClass(), INPUT_FILE);
+        Scanner scanner = openFile(this.getClass());
 
         List<String> consoleOutput = new ArrayList<>();
         while (scanner.hasNextLine()) {

@@ -1,7 +1,7 @@
 package advent;
 
-import static advent.util.TestUtil.INPUT_FILE;
 import static advent.util.TestUtil.openFile;
+import static advent.util.TestUtil.postAndValidateResult;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -48,6 +48,7 @@ public class Day6Test {
                 .build();
 
         System.out.printf("Result for task 1 is: %s", task.getResult());
+        postAndValidateResult(this.getClass(), task.getResult().toString(), "1");
     }
 
     @Test
@@ -57,9 +58,10 @@ public class Day6Test {
                 .build();
 
         System.out.printf("Result for task 2 is: %s", task.getResult());
+        postAndValidateResult(this.getClass(), task.getResult().toString(), "2");
     }
 
     private String readInput() {
-        return openFile(this.getClass(), INPUT_FILE).nextLine();
+        return openFile(this.getClass()).nextLine();
     }
 }

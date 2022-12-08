@@ -1,7 +1,7 @@
 package advent;
 
-import static advent.util.TestUtil.INPUT_FILE;
 import static advent.util.TestUtil.openFile;
+import static advent.util.TestUtil.postAndValidateResult;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,6 +57,7 @@ public class Day5Test {
                 .build();
 
         System.out.printf("Result for task 1 is: %s", task.getResult());
+        postAndValidateResult(this.getClass(), task.getResult(), "1");
     }
 
     @Test
@@ -66,10 +67,11 @@ public class Day5Test {
                 .build();
 
         System.out.printf("Result for task 2 is: %s", task.getResult());
+        postAndValidateResult(this.getClass(), task.getResult(), "2");
     }
 
     private Day5Task.Input readInput() {
-        Scanner scanner = openFile(this.getClass(), INPUT_FILE);
+        Scanner scanner = openFile(this.getClass());
         return new Day5Task.Input(readCrates(scanner), readInstructions(scanner));
     }
 

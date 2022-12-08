@@ -1,7 +1,7 @@
 package advent;
 
-import static advent.util.TestUtil.INPUT_FILE;
 import static advent.util.TestUtil.openFile;
+import static advent.util.TestUtil.postAndValidateResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,22 +48,22 @@ public class Day3Test {
                 .solve(Day3Task.Solution.FIND_DUPLICATE_ITEMS_SUM)
                 .build();
 
-
         System.out.printf("Result for task 1 is: %s", task.getResult());
+        postAndValidateResult(this.getClass(), task.getResult().toString(), "1");
     }
 
     @Test
     public void testTask2() {
-        Day3Task solution = Day3Task.builder(readInput())
+        Day3Task task = Day3Task.builder(readInput())
                 .solve(Day3Task.Solution.FIND_BADGES_SUM)
                 .build();
 
-
-        System.out.printf("Result for task 2 is: %s", solution.getResult());
+        System.out.printf("Result for task 2 is: %s", task.getResult());
+        postAndValidateResult(this.getClass(), task.getResult().toString(), "2");
     }
 
     private List<String> readInput() {
-        Scanner scanner = openFile(this.getClass(), INPUT_FILE);
+        Scanner scanner = openFile(this.getClass());
 
         List<String> rucksacks = new ArrayList<>();
         while (scanner.hasNextLine()) {

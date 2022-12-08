@@ -1,7 +1,7 @@
 package advent;
 
-import static advent.util.TestUtil.INPUT_FILE;
 import static advent.util.TestUtil.openFile;
+import static advent.util.TestUtil.postAndValidateResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +42,8 @@ public class Day2Test {
                 .solve(Day2Task.Solution.FIND_GUESSED_STRATEGY_SCORE)
                 .build();
 
-
         System.out.printf("Result for task 1 is: %s", task.getResult());
+        postAndValidateResult(this.getClass(), task.getResult().toString(), "1");
     }
 
     @Test
@@ -52,12 +52,12 @@ public class Day2Test {
                 .solve(Day2Task.Solution.FIND_ACTUAL_STRATEGY_SCORE)
                 .build();
 
-
         System.out.printf("Result for task 2 is: %s", task.getResult());
+        postAndValidateResult(this.getClass(), task.getResult().toString(), "2");
     }
 
     private List<String> readInput() {
-        Scanner scanner = openFile(this.getClass(), INPUT_FILE);
+        Scanner scanner = openFile(this.getClass());
 
         List<String> matches = new ArrayList<>();
         while (scanner.hasNextLine()) {
