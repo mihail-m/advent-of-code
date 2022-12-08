@@ -35,7 +35,6 @@ public class Day3Task extends Task {
             }
         },
         FIND_BADGES_SUM {
-
             @Override
             public void solve(Day3Task solution) {
                 for (int index = 0; index < solution.rucksacks.size(); index += 3) {
