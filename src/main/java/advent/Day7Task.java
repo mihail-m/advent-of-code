@@ -20,11 +20,11 @@ public class Day7Task extends Task<List<String>, Long> {
 
         FIND_DIRECTORIES_UNDER_100000_SIZE_SUM {
             @Override
-            public void solve(Day7Task solution) {
-                buildFileSystemTree(solution.input)
+            public void solve(Day7Task task) {
+                buildFileSystemTree(task.input)
                         .forEach((__, dir) -> {
                             if (dir.size <= 100000L) {
-                                solution.result += dir.size;
+                                task.result += dir.size;
                             }
                         });
             }
@@ -32,15 +32,15 @@ public class Day7Task extends Task<List<String>, Long> {
 
         FIND_DIRECTORY_TO_DELETE {
             @Override
-            public void solve(Day7Task solution) {
-                Map<String, Dir> fileSystem = buildFileSystemTree(solution.input);
+            public void solve(Day7Task task) {
+                Map<String, Dir> fileSystem = buildFileSystemTree(task.input);
 
                 long totalTakenSpace = fileSystem.get(ROOT_DIR).size;
 
-                solution.result = totalTakenSpace;
+                task.result = totalTakenSpace;
                 fileSystem.forEach((__, dir) -> {
                     if (SYSTEM_SIZE - (totalTakenSpace - dir.size) >= NEEDED_SPACE) {
-                        solution.result = Math.min(solution.result, dir.size);
+                        task.result = Math.min(task.result, dir.size);
                     }
                 });
             }

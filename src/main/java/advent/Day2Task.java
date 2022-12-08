@@ -16,7 +16,7 @@ public class Day2Task extends Task<List<String>, Integer> {
 
         FIND_GUESSED_STRATEGY_SCORE {
             @Override
-            public void solve(Day2Task solution) {
+            public void solve(Day2Task task) {
                 Map<String, Integer> matchPoints = Map.of(
                         "A X", 4,
                         "A Y", 8,
@@ -29,7 +29,7 @@ public class Day2Task extends Task<List<String>, Integer> {
                         "C Z", 6
                 );
 
-                solution.result = solution.input.stream()
+                task.result = task.input.stream()
                         .mapToInt(matchPoints::get)
                         .sum();
             }
@@ -37,7 +37,7 @@ public class Day2Task extends Task<List<String>, Integer> {
 
         FIND_ACTUAL_STRATEGY_SCORE {
             @Override
-            public void solve(Day2Task solution) {
+            public void solve(Day2Task task) {
                 Map<String, Integer> matchPoints = Map.of(
                         "A X", 3,
                         "A Y", 4,
@@ -50,7 +50,7 @@ public class Day2Task extends Task<List<String>, Integer> {
                         "C Z", 7
                 );
 
-                solution.result = solution.input.stream()
+                task.result = task.input.stream()
                         .mapToInt(matchPoints::get)
                         .sum();
             }

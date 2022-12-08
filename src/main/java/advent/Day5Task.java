@@ -30,8 +30,8 @@ public class Day5Task extends Task<Day5Task.Input, String> {
 
         FIND_TOP_CRATES_CRATE_MOVER_9000 {
             @Override
-            public void solve(Day5Task solution) {
-                solution.result = findTopCrates(solution.input.crates, solution.input.instructions, (from, to, amount) -> {
+            public void solve(Day5Task task) {
+                task.result = findTopCrates(task.input.crates, task.input.instructions, (from, to, amount) -> {
                     for (int moved = 0; moved < amount; moved++) {
                         to.add(from.get(from.size() - 1));
                         from.remove(from.size() - 1);
@@ -42,8 +42,8 @@ public class Day5Task extends Task<Day5Task.Input, String> {
 
         FIND_TOP_CRATES_CRATE_MOVER_9001 {
             @Override
-            public void solve(Day5Task solution) {
-                solution.result = findTopCrates(solution.input.crates, solution.input.instructions, (from, to, amount) -> {
+            public void solve(Day5Task task) {
+                task.result = findTopCrates(task.input.crates, task.input.instructions, (from, to, amount) -> {
                     to.addAll(from.subList(from.size() - amount, from.size()));
                     for (int removed = 0; removed < amount; removed++) {
                         from.remove(from.size() - 1);

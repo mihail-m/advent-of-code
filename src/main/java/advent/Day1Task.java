@@ -15,8 +15,8 @@ public class Day1Task extends Task<List<List<Integer>>, Integer> {
 
         FIND_MAX_CALORIE_COUNT {
             @Override
-            public void solve(Day1Task solution) {
-                solution.result = solution.input.stream()
+            public void solve(Day1Task task) {
+                task.result = task.input.stream()
                         .mapToInt(foodList -> foodList.stream()
                                 .mapToInt(food -> food)
                                 .sum())
@@ -27,13 +27,13 @@ public class Day1Task extends Task<List<List<Integer>>, Integer> {
 
         FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS {
             @Override
-            public void solve(Day1Task solution) {
-                solution.result = solution.input.stream()
+            public void solve(Day1Task task) {
+                task.result = task.input.stream()
                         .mapToInt(foodList -> foodList.stream()
                                 .mapToInt(food -> food)
                                 .sum())
                         .sorted()
-                        .skip(solution.input.size() - 3)
+                        .skip(task.input.size() - 3)
                         .limit(3)
                         .sum();
             }

@@ -16,15 +16,15 @@ public class Day6Task extends Task<String, Integer> {
 
         FIND_FIRST_4_CONSECUTIVE_DIFFERENT_CHARACTERS {
             @Override
-            public void solve(Day6Task solution) {
-                solution.result = findKDifferentConsecutiveLetters(solution.input, 4);
+            public void solve(Day6Task task) {
+                task.result = findKDifferentConsecutiveLetters(task.input, 4);
             }
         },
 
         FIND_FIRST_14_CONSECUTIVE_DIFFERENT_CHARACTERS {
             @Override
-            public void solve(Day6Task solution) {
-                solution.result = findKDifferentConsecutiveLetters(solution.input, 14);
+            public void solve(Day6Task task) {
+                task.result = findKDifferentConsecutiveLetters(task.input, 14);
             }
         };
 

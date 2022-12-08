@@ -15,8 +15,8 @@ public class Day4Task extends Task<List<List<Integer>>, Integer> {
 
         FIND_COMPLETELY_COVERED_INTERVALS_COUNT {
             @Override
-            public void solve(Day4Task solution) {
-                solution.result = (int) solution.input.stream()
+            public void solve(Day4Task task) {
+                task.result = (int) task.input.stream()
                         .filter(Solution::intervalCompletelyCovered)
                         .count();
             }
@@ -24,8 +24,8 @@ public class Day4Task extends Task<List<List<Integer>>, Integer> {
 
         FIND_OVERLAPPING_INTERVALS_COUNT {
             @Override
-            public void solve(Day4Task solution) {
-                solution.result = (int) solution.input.stream()
+            public void solve(Day4Task task) {
+                task.result = (int) task.input.stream()
                         .filter(Solution::intervalOverlap)
                         .count();
             }

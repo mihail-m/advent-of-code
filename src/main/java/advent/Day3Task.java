@@ -18,8 +18,8 @@ public class Day3Task extends Task<List<String>, Integer> {
 
         FIND_DUPLICATE_ITEMS_SUM {
             @Override
-            public void solve(Day3Task solution) {
-                solution.result = solution.input.stream()
+            public void solve(Day3Task task) {
+                task.result = task.input.stream()
                         .mapToInt(rucksack -> findMatchingItemValue(List.of(
                                 rucksack.substring(0, rucksack.length() / 2),
                                 rucksack.substring(rucksack.length() / 2))))
@@ -28,12 +28,12 @@ public class Day3Task extends Task<List<String>, Integer> {
         },
         FIND_BADGES_SUM {
             @Override
-            public void solve(Day3Task solution) {
-                for (int index = 0; index < solution.input.size(); index += 3) {
-                    solution.result += findMatchingItemValue(List.of(
-                            solution.input.get(index),
-                            solution.input.get(index + 1),
-                            solution.input.get(index + 2)
+            public void solve(Day3Task task) {
+                for (int index = 0; index < task.input.size(); index += 3) {
+                    task.result += findMatchingItemValue(List.of(
+                            task.input.get(index),
+                            task.input.get(index + 1),
+                            task.input.get(index + 2)
                     ));
                 }
             }

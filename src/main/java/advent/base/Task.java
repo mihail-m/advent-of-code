@@ -17,7 +17,7 @@ public class Task<InputType, ResultType> {
     }
 
     public interface SolutionStrategy<T extends Task<?, ?>> {
-        void solve(T solution);
+        void solve(T task);
     }
 
     public static class Builder<T extends Task<?, ?>> {
