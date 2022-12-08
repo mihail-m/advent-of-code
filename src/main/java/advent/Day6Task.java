@@ -36,8 +36,6 @@ public class Day6Task extends Task {
             }
         };
 
-        public abstract void solve(Day6Task solution);
-
         private static int findKDifferentConsecutiveLetters(String text, int k) {
             Map<Character, Integer> lettersMap = new HashMap<>();
             for (int index = 0; index < k - 1; index++) {

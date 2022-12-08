@@ -45,9 +45,7 @@ public class Day1Task extends Task {
                         .limit(3)
                         .sum();
             }
-        };
-
-        public abstract void solve(Day1Task solution);
+        }
     }
 
     public static Builder<Day1Task> builder(List<List<Integer>> input) {

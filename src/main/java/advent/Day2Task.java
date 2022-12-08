@@ -62,9 +62,7 @@ public class Day2Task extends Task {
                         .mapToInt(matchPoints::get)
                         .sum();
             }
-        };
-
-        public abstract void solve(Day2Task solution);
+        }
     }
 
     public static Builder<Day2Task> builder(List<String> input) {

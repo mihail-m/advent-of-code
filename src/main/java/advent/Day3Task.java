@@ -48,8 +48,6 @@ public class Day3Task extends Task {
             }
         };
 
-        public abstract void solve(Day3Task solution);
-
         private static int findMatchingItemValue(List<String> itemGroups) {
             List<Set<Character>> itemSets = new ArrayList<>();
             itemGroups.forEach(itemGroup -> {

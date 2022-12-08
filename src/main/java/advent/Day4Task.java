@@ -39,8 +39,6 @@ public class Day4Task extends Task {
             }
         };
 
-        public abstract void solve(Day4Task solution);
-
         private static boolean intervalCompletelyCovered(List<Integer> intervals) {
             assert intervals.size() == 4;
 

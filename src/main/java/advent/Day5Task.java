@@ -51,8 +51,6 @@ public class Day5Task extends Task {
             }
         };
 
-        public abstract void solve(Day5Task solution);
-
         private static String findTopCrates(Map<Integer, List<Character>> crates,
                 List<List<Integer>> instructions,
                 MoverFunction crateMover) {

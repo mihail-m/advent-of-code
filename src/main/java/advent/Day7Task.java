@@ -54,8 +54,6 @@ public class Day7Task extends Task {
             }
         };
 
-        public abstract void solve(Day7Task solution);
-
         private static final String ROOT_DIR = "/";
 
         private static final char COMMAND_SYMBOL = '$';
