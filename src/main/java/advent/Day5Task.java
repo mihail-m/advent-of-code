@@ -15,14 +15,19 @@ public class Day5Task extends Task<Day5Task.Input, String> {
     }
 
     public static class Input {
+
         public Map<Integer, List<Character>> crates;
         public List<List<Integer>> instructions;
 
         public Input(Map<Integer, List<Character>> crates, List<List<Integer>> instructions) {
+            this.crates = getMutableCrates(crates);
+            this.instructions = instructions;
+        }
+
+        private Map<Integer, List<Character>> getMutableCrates(Map<Integer, List<Character>> crates) {
             Map<Integer, List<Character>> cratesMutable = new HashMap<>();
             crates.forEach((key, list) -> cratesMutable.put(key, new ArrayList<>(list)));
-            this.crates = cratesMutable;
-            this.instructions = instructions;
+            return cratesMutable;
         }
     }
 
