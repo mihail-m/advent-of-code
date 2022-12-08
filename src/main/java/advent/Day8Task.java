@@ -21,7 +21,7 @@ public class Day8Task extends Task<Integer[][], Integer> {
         FIND_MAX_VIEWING_SCORE {
             @Override
             public void solve(Day8Task task) {
-                task.result = getAllViewingScores(task.input);
+                task.result = checkAllViewingScores(task.input);
             }
         };
 
@@ -76,7 +76,7 @@ public class Day8Task extends Task<Integer[][], Integer> {
             return result;
         }
 
-        private static int getAllViewingScores(Integer[][] map) {
+        private static int checkAllViewingScores(Integer[][] map) {
             int result = 0;
 
             for (int i = 0; i < map.length; i++) {
