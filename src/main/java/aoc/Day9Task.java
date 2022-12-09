@@ -32,10 +32,10 @@ public class Day9Task extends Task<List<String>, Integer> {
         };
 
         private static final Map<String, Integer[]> moveTo = Map.of(
-                "L", new Integer[]{0, -1},
-                "R", new Integer[]{0, 1},
-                "U", new Integer[]{1, 0},
-                "D", new Integer[]{-1, 0});
+                "L", new Integer[] { 0, -1},
+                "R", new Integer[] { 0,  1},
+                "U", new Integer[] { 1,  0},
+                "D", new Integer[] {-1,  0});
 
         private static int simulate(List<String> input, int tailSize) {
             List<Integer[]> tPos = new ArrayList<>();
@@ -47,8 +47,8 @@ public class Day9Task extends Task<List<String>, Integer> {
             visitedCells.add(getLastVisitedCell(tPos));
 
             for (String move : input) {
-                String[] info = move.split(" ");
-                doNextMove(tPos, info[0], Integer.parseInt(info[1]), visitedCells);
+                String[] move_info = move.split(" ");
+                doNextMove(tPos, move_info[0], Integer.parseInt(move_info[1]), visitedCells);
             }
 
             return visitedCells.size();
@@ -61,18 +61,18 @@ public class Day9Task extends Task<List<String>, Integer> {
 
                 for (int i = 1; i < tPos.size(); i++) {
                     if (notAdjacent(tPos.get(i - 1), tPos.get(i))) {
-                        int[] add = new int[]{0, 0};
-                        for (int j = 0; j < 2; j++) {
-                            if (Math.abs(tPos.get(i - 1)[j] - tPos.get(i)[j]) > 0) {
-                                add[j] = tPos.get(i - 1)[j] < tPos.get(i)[j] ? -1 : 1;
-                            }
-                        }
-                        tPos.get(i)[0] += add[0];
-                        tPos.get(i)[1] += add[1];
+                        move(tPos, i, 0);
+                        move(tPos, i, 1);
                     }
                 }
 
                 visitedCells.add(getLastVisitedCell(tPos));
+            }
+        }
+
+        private static void move(List<Integer[]> tPos, int tail, int coord) {
+            if (Math.abs(tPos.get(tail - 1)[coord] - tPos.get(tail)[coord]) > 0) {
+                tPos.get(tail)[coord] += tPos.get(tail - 1)[coord] < tPos.get(tail)[coord] ? -1 : 1;
             }
         }
 
