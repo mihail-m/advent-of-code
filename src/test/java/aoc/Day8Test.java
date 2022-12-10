@@ -1,5 +1,6 @@
 package aoc;
 
+import static aoc.util.TestUtil.INPUT_FILE;
 import static aoc.util.TestUtil.openFile;
 
 import java.util.ArrayList;
@@ -38,25 +39,20 @@ public class Day8Test extends BaseTest<Day8Task, Integer> {
 
     @Test
     public void testTask1() {
-        testTask1(Day8Task.builder(readInput())
+        testTask1(Day8Task.builder(parseInput())
                 .solve(Day8Task.Solution.FIND_VISIBLE_TREES)
                 .build());
     }
 
     @Test
     public void testTask2() {
-        testTask2(Day8Task.builder(readInput())
+        testTask2(Day8Task.builder(parseInput())
                 .solve(Day8Task.Solution.FIND_MAX_VIEWING_SCORE)
                 .build());
     }
 
-    private Integer[][] readInput() {
-        Scanner scanner = openFile(this.getClass());
-
-        List<String> input = new ArrayList<>();
-        while (scanner.hasNextLine()) {
-            input.add(scanner.nextLine());
-        }
+    private Integer[][] parseInput() {
+        List<String> input = readInput(INPUT_FILE);
 
         Integer[][] map = new Integer[input.size()][input.get(0).length()];
         for (int i = 0; i < input.size(); i++) {

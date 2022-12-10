@@ -1,11 +1,10 @@
 package aoc;
 
-import static aoc.util.TestUtil.openFile;
+import static aoc.util.TestUtil.INPUT_FILE;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
@@ -54,15 +53,11 @@ public class Day4Test extends BaseTest<Day4Task, Integer> {
     }
 
     private List<List<Integer>> readInput() {
-        Scanner scanner = openFile(this.getClass());
-
-        List<List<Integer>> intervalPairs = new ArrayList<>();
-
-        while (scanner.hasNextLine()) {
-            String inputLine = scanner.nextLine();
-            intervalPairs.add(Arrays.stream(inputLine.split("([,\\-])")).map(Integer::parseInt).toList());
-        }
-
-        return intervalPairs;
+        return readInput(INPUT_FILE)
+                .stream()
+                .map(line -> Arrays.stream(line.split("([,\\-])"))
+                        .map(Integer::parseInt)
+                        .toList())
+                .collect(Collectors.toList());
     }
 }

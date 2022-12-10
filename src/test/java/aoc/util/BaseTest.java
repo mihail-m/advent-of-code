@@ -1,7 +1,10 @@
 package aoc.util;
 
-import static aoc.util.TestUtil.RESULT_MESSAGE;
-import static aoc.util.TestUtil.postAndValidateResult;
+import static aoc.util.TestUtil.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import org.junit.jupiter.api.Assertions;
 
@@ -25,5 +28,16 @@ public abstract class BaseTest<TaskType extends Task<?, SolutionType>, SolutionT
     protected void testTask2(TaskType task) {
         System.out.printf(RESULT_MESSAGE, "2", task.getResult());
         postAndValidateResult(this.getClass(), task.getResult().toString(), "2");
+    }
+
+    protected List<String> readInput(String inputFile) {
+        Scanner scanner = openFile(this.getClass(), inputFile);
+
+        List<String> input = new ArrayList<>();
+        while (scanner.hasNextLine()) {
+            input.add(scanner.nextLine());
+        }
+
+        return input;
     }
 }

@@ -1,5 +1,6 @@
 package aoc;
 
+import static aoc.util.TestUtil.INPUT_FILE;
 import static aoc.util.TestUtil.openFile;
 
 import org.junit.jupiter.api.Test;
@@ -52,6 +53,6 @@ public class Day6Test extends BaseTest<Day6Task, Integer> {
     }
 
     private String readInput() {
-        return openFile(this.getClass()).nextLine();
+        return openFile(this.getClass(), INPUT_FILE).nextLine();
     }
 }

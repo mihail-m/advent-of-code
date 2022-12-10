@@ -26,7 +26,9 @@ public class TestUtil {
 
     public static final String INPUT_FILE = "input.txt";
 
-    public static final String RESULT_MESSAGE = "Result for task %s is: %s \n";
+    public static final String SAMPLE_INPUT_FILE = "sample_input.txt";
+
+    public static final String RESULT_MESSAGE = "Result for task %s is:\n%s \n";
 
     private static final String AOC_URL_BASE = "https://adventofcode.com/2022/day/%s/";
     private static final String AOC_URL_INPUT = AOC_URL_BASE + "input";
@@ -48,8 +50,8 @@ public class TestUtil {
 
     private static final String TESTS_LOCATION_PREFIX = "src/test/java/input/files/";
 
-    public static Scanner openFile(Class<?> caller) {
-        return createScanner(TESTS_LOCATION_PREFIX + getDayFolder(caller) + INPUT_FILE, caller, true);
+    public static Scanner openFile(Class<?> caller, String inputFile) {
+        return createScanner(TESTS_LOCATION_PREFIX + getDayFolder(caller) + inputFile, caller, true);
     }
 
     public static void postAndValidateResult(Class<?> caller, String result, String level) {

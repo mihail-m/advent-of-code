@@ -1,5 +1,6 @@
 package aoc;
 
+import static aoc.util.TestUtil.INPUT_FILE;
 import static aoc.util.TestUtil.openFile;
 
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class Day5Test extends BaseTest<Day5Task, String> {
     }
 
     private Day5Task.Input readInput() {
-        Scanner scanner = openFile(this.getClass());
+        Scanner scanner = openFile(this.getClass(), INPUT_FILE);
         return new Day5Task.Input(readCrates(scanner), readInstructions(scanner));
     }
 

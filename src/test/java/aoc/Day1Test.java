@@ -1,5 +1,6 @@
 package aoc;
 
+import static aoc.util.TestUtil.INPUT_FILE;
 import static aoc.util.TestUtil.openFile;
 
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public class Day1Test extends BaseTest<Day1Task, Integer> {
     }
 
     private List<List<Integer>> readInput() {
-        Scanner scanner = openFile(this.getClass());
+        Scanner scanner = openFile(this.getClass(), INPUT_FILE);
 
         List<List<Integer>> elfsFoodList = new ArrayList<>();
         List<Integer> currentElfFood = new ArrayList<>();

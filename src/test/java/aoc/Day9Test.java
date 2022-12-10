@@ -1,10 +1,8 @@
 package aoc;
 
-import static aoc.util.TestUtil.openFile;
+import static aoc.util.TestUtil.INPUT_FILE;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
@@ -55,26 +53,15 @@ public class Day9Test extends BaseTest<Day9Task, Integer> {
 
     @Test
     public void testTask1() {
-        testTask1(Day9Task.builder(readInput())
+        testTask1(Day9Task.builder(readInput(INPUT_FILE))
                 .solve(Day9Task.Solution.FIND_VISITED_CELLS_COUNT_SIZE_2)
                 .build());
     }
 
     @Test
     public void testTask2() {
-        testTask2(Day9Task.builder(readInput())
+        testTask2(Day9Task.builder(readInput(INPUT_FILE))
                 .solve(Day9Task.Solution.FIND_VISITED_CELLS_COUNT_SIZE_10)
                 .build());
-    }
-
-    private List<String> readInput() {
-        Scanner scanner = openFile(this.getClass());
-
-        List<String> input = new ArrayList<>();
-        while (scanner.hasNextLine()) {
-            input.add(scanner.nextLine());
-        }
-
-        return input;
     }
 }

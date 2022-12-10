@@ -1,10 +1,8 @@
 package aoc;
 
-import static aoc.util.TestUtil.openFile;
+import static aoc.util.TestUtil.INPUT_FILE;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
@@ -40,26 +38,15 @@ public class Day3Test extends BaseTest<Day3Task, Integer> {
 
     @Test
     public void testTask1() {
-        testTask1(Day3Task.builder(readInput())
+        testTask1(Day3Task.builder(readInput(INPUT_FILE))
                 .solve(Day3Task.Solution.FIND_DUPLICATE_ITEMS_SUM)
                 .build());
     }
 
     @Test
     public void testTask2() {
-        testTask2(Day3Task.builder(readInput())
+        testTask2(Day3Task.builder(readInput(INPUT_FILE))
                 .solve(Day3Task.Solution.FIND_BADGES_SUM)
                 .build());
-    }
-
-    private List<String> readInput() {
-        Scanner scanner = openFile(this.getClass());
-
-        List<String> rucksacks = new ArrayList<>();
-        while (scanner.hasNextLine()) {
-            rucksacks.add(scanner.nextLine());
-        }
-
-        return rucksacks;
     }
 }
