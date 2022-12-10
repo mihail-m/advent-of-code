@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import aoc.util.BaseTest;
 
-public class Day2Test extends BaseTest<Day2Task, Integer> {
+public class Day02Test extends BaseTest<Day02Task, Integer> {
 
     private static final List<String> SAMPLE_INPUT = List.of("A Y", "B X", "C Z");
 
@@ -18,29 +18,29 @@ public class Day2Test extends BaseTest<Day2Task, Integer> {
 
     @Test
     public void sampleTestTask1() {
-        sampleTestTask1(Day2Task.builder(SAMPLE_INPUT)
-                .solve(Day2Task.Solution.FIND_GUESSED_STRATEGY_SCORE)
+        sampleTestTask1(Day02Task.builder(SAMPLE_INPUT)
+                .solve(Day02Task.Solution.FIND_GUESSED_STRATEGY_SCORE)
                 .build(), SAMPLE_RESULT_TASK_1);
     }
 
     @Test
     public void sampleTestTask2() {
-        sampleTestTask2(Day2Task.builder(SAMPLE_INPUT)
-                .solve(Day2Task.Solution.FIND_ACTUAL_STRATEGY_SCORE)
+        sampleTestTask2(Day02Task.builder(SAMPLE_INPUT)
+                .solve(Day02Task.Solution.FIND_ACTUAL_STRATEGY_SCORE)
                 .build(), SAMPLE_RESULT_TASK_2);
     }
 
     @Test
     public void testTask1() {
-        testTask1(Day2Task.builder(readInput(INPUT_FILE))
-                .solve(Day2Task.Solution.FIND_GUESSED_STRATEGY_SCORE)
+        testTask1(Day02Task.builder(readInput(INPUT_FILE))
+                .solve(Day02Task.Solution.FIND_GUESSED_STRATEGY_SCORE)
                 .build());
     }
 
     @Test
     public void testTask2() {
-        testTask2(Day2Task.builder(readInput(INPUT_FILE))
-                .solve(Day2Task.Solution.FIND_ACTUAL_STRATEGY_SCORE)
+        testTask2(Day02Task.builder(readInput(INPUT_FILE))
+                .solve(Day02Task.Solution.FIND_ACTUAL_STRATEGY_SCORE)
                 .build());
     }
 }

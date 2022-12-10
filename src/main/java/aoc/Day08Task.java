@@ -4,25 +4,25 @@ import java.util.Arrays;
 
 import aoc.base.Task;
 
-public class Day8Task extends Task<Integer[][], Integer> {
+public class Day08Task extends Task<Integer[][], Integer> {
 
-    private Day8Task(Integer[][] input) {
+    private Day08Task(Integer[][] input) {
         super(input);
         this.result = 0;
     }
 
-    public enum Solution implements SolutionStrategy<Day8Task> {
+    public enum Solution implements SolutionStrategy<Day08Task> {
 
         FIND_VISIBLE_TREES {
             @Override
-            public void solve(Day8Task task) {
+            public void solve(Day08Task task) {
                 task.result = traverseAllDirections(task.input);
             }
         },
 
         FIND_MAX_VIEWING_SCORE {
             @Override
-            public void solve(Day8Task task) {
+            public void solve(Day08Task task) {
                 task.result = checkAllViewingScores(task.input);
             }
         };
@@ -112,7 +112,7 @@ public class Day8Task extends Task<Integer[][], Integer> {
         }
     }
 
-    public static Builder<Day8Task> builder(Integer[][] map) {
-        return new Builder<>(() -> new Day8Task(map));
+    public static Builder<Day08Task> builder(Integer[][] map) {
+        return new Builder<>(() -> new Day08Task(map));
     }
 }

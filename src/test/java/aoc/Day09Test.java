@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import aoc.util.BaseTest;
 
-public class Day9Test extends BaseTest<Day9Task, Integer> {
+public class Day09Test extends BaseTest<Day09Task, Integer> {
 
     private static final List<String> SAMPLE_INPUT_1 = List.of(
             "R 4",
@@ -38,30 +38,30 @@ public class Day9Test extends BaseTest<Day9Task, Integer> {
 
     @Test
     public void sampleTestTask1() {
-        sampleTestTask1(Day9Task.builder(SAMPLE_INPUT_1)
-                .solve(Day9Task.Solution.FIND_VISITED_CELLS_COUNT_SIZE_2)
+        sampleTestTask1(Day09Task.builder(SAMPLE_INPUT_1)
+                .solve(Day09Task.Solution.FIND_VISITED_CELLS_COUNT_SIZE_2)
                 .build(), SAMPLE_RESULT_1);
     }
 
     @Test
     public void sampleTestTask2() {
-        sampleTestTask1(Day9Task.builder(SAMPLE_INPUT_2)
-                .solve(Day9Task.Solution.FIND_VISITED_CELLS_COUNT_SIZE_10)
+        sampleTestTask1(Day09Task.builder(SAMPLE_INPUT_2)
+                .solve(Day09Task.Solution.FIND_VISITED_CELLS_COUNT_SIZE_10)
                 .build(), SAMPLE_RESULT_2);
     }
 
 
     @Test
     public void testTask1() {
-        testTask1(Day9Task.builder(readInput(INPUT_FILE))
-                .solve(Day9Task.Solution.FIND_VISITED_CELLS_COUNT_SIZE_2)
+        testTask1(Day09Task.builder(readInput(INPUT_FILE))
+                .solve(Day09Task.Solution.FIND_VISITED_CELLS_COUNT_SIZE_2)
                 .build());
     }
 
     @Test
     public void testTask2() {
-        testTask2(Day9Task.builder(readInput(INPUT_FILE))
-                .solve(Day9Task.Solution.FIND_VISITED_CELLS_COUNT_SIZE_10)
+        testTask2(Day09Task.builder(readInput(INPUT_FILE))
+                .solve(Day09Task.Solution.FIND_VISITED_CELLS_COUNT_SIZE_10)
                 .build());
     }
 }

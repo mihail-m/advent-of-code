@@ -5,25 +5,25 @@ import java.util.Map;
 
 import aoc.base.Task;
 
-public class Day6Task extends Task<String, Integer> {
+public class Day06Task extends Task<String, Integer> {
 
-    private Day6Task(String input) {
+    private Day06Task(String input) {
         super(input);
         this.result = 0;
     }
 
-    public enum Solution implements SolutionStrategy<Day6Task> {
+    public enum Solution implements SolutionStrategy<Day06Task> {
 
         FIND_FIRST_4_CONSECUTIVE_DIFFERENT_CHARACTERS {
             @Override
-            public void solve(Day6Task task) {
+            public void solve(Day06Task task) {
                 task.result = findKDifferentConsecutiveLetters(task.input, 4);
             }
         },
 
         FIND_FIRST_14_CONSECUTIVE_DIFFERENT_CHARACTERS {
             @Override
-            public void solve(Day6Task task) {
+            public void solve(Day06Task task) {
                 task.result = findKDifferentConsecutiveLetters(task.input, 14);
             }
         };
@@ -61,7 +61,7 @@ public class Day6Task extends Task<String, Integer> {
         }
     }
 
-    public static Builder<Day6Task> builder(String input) {
-        return new Builder<>(() -> new Day6Task(input));
+    public static Builder<Day06Task> builder(String input) {
+        return new Builder<>(() -> new Day06Task(input));
     }
 }

@@ -7,9 +7,9 @@ import java.util.Map;
 
 import aoc.base.Task;
 
-public class Day5Task extends Task<Day5Task.Input, String> {
+public class Day05Task extends Task<Day05Task.Input, String> {
 
-    private Day5Task(Input input) {
+    private Day05Task(Input input) {
         super(input);
         this.result = "";
     }
@@ -31,11 +31,11 @@ public class Day5Task extends Task<Day5Task.Input, String> {
         }
     }
 
-    public enum Solution implements SolutionStrategy<Day5Task> {
+    public enum Solution implements SolutionStrategy<Day05Task> {
 
         FIND_TOP_CRATES_CRATE_MOVER_9000 {
             @Override
-            public void solve(Day5Task task) {
+            public void solve(Day05Task task) {
                 task.result = findTopCrates(task.input.crates, task.input.instructions, (from, to, amount) -> {
                     for (int moved = 0; moved < amount; moved++) {
                         to.add(from.get(from.size() - 1));
@@ -47,7 +47,7 @@ public class Day5Task extends Task<Day5Task.Input, String> {
 
         FIND_TOP_CRATES_CRATE_MOVER_9001 {
             @Override
-            public void solve(Day5Task task) {
+            public void solve(Day05Task task) {
                 task.result = findTopCrates(task.input.crates, task.input.instructions, (from, to, amount) -> {
                     to.addAll(from.subList(from.size() - amount, from.size()));
                     for (int removed = 0; removed < amount; removed++) {
@@ -80,7 +80,7 @@ public class Day5Task extends Task<Day5Task.Input, String> {
         }
     }
 
-    public static Builder<Day5Task> builder(Input input) {
-        return new Builder<>(() -> new Day5Task(input));
+    public static Builder<Day05Task> builder(Input input) {
+        return new Builder<>(() -> new Day05Task(input));
     }
 }

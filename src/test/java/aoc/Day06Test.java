@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import aoc.util.BaseTest;
 
-public class Day6Test extends BaseTest<Day6Task, Integer> {
+public class Day06Test extends BaseTest<Day06Task, Integer> {
 
     private static final String[] SAMPLE_INPUTS = {
             "mjqjpqmgbljsphdztnvjfqwrcgsmlb",
@@ -25,30 +25,30 @@ public class Day6Test extends BaseTest<Day6Task, Integer> {
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4})
     public void sampleTestTask1(int testNumber) {
-        sampleTestTask1(Day6Task.builder(SAMPLE_INPUTS[testNumber])
-                .solve(Day6Task.Solution.FIND_FIRST_4_CONSECUTIVE_DIFFERENT_CHARACTERS)
+        sampleTestTask1(Day06Task.builder(SAMPLE_INPUTS[testNumber])
+                .solve(Day06Task.Solution.FIND_FIRST_4_CONSECUTIVE_DIFFERENT_CHARACTERS)
                 .build(), SAMPLE_RESULTS_TASK_1[testNumber]);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {0, 1, 2, 3, 4})
     public void sampleTestTask2(int testNumber) {
-        sampleTestTask2(Day6Task.builder(SAMPLE_INPUTS[testNumber])
-                .solve(Day6Task.Solution.FIND_FIRST_14_CONSECUTIVE_DIFFERENT_CHARACTERS)
+        sampleTestTask2(Day06Task.builder(SAMPLE_INPUTS[testNumber])
+                .solve(Day06Task.Solution.FIND_FIRST_14_CONSECUTIVE_DIFFERENT_CHARACTERS)
                 .build(), SAMPLE_RESULTS_TASK_2[testNumber]);
     }
 
     @Test
     public void testTask1() {
-        testTask1(Day6Task.builder(readInput())
-                .solve(Day6Task.Solution.FIND_FIRST_4_CONSECUTIVE_DIFFERENT_CHARACTERS)
+        testTask1(Day06Task.builder(readInput())
+                .solve(Day06Task.Solution.FIND_FIRST_4_CONSECUTIVE_DIFFERENT_CHARACTERS)
                 .build());
     }
 
     @Test
     public void testTask2() {
-        testTask2(Day6Task.builder(readInput())
-                .solve(Day6Task.Solution.FIND_FIRST_14_CONSECUTIVE_DIFFERENT_CHARACTERS)
+        testTask2(Day06Task.builder(readInput())
+                .solve(Day06Task.Solution.FIND_FIRST_14_CONSECUTIVE_DIFFERENT_CHARACTERS)
                 .build());
     }
 

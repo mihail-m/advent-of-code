@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import aoc.util.BaseTest;
 
-public class Day5Test extends BaseTest<Day5Task, String> {
+public class Day05Test extends BaseTest<Day05Task, String> {
 
     static final Map<Integer, List<Character>> SAMPLE_INPUT = Map.of(
             1, List.of('Z', 'N'),
@@ -35,35 +35,35 @@ public class Day5Test extends BaseTest<Day5Task, String> {
 
     @Test
     public void sampleTestTask1() {
-        sampleTestTask1(Day5Task.builder(new Day5Task.Input(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS))
-                .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9000)
+        sampleTestTask1(Day05Task.builder(new Day05Task.Input(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS))
+                .solve(Day05Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9000)
                 .build(), SAMPLE_RESULT_TASK_1);
     }
 
     @Test
     public void sampleTestTask2() {
-        sampleTestTask2(Day5Task.builder(new Day5Task.Input(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS))
-                .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9001)
+        sampleTestTask2(Day05Task.builder(new Day05Task.Input(SAMPLE_INPUT, SAMPLE_INSTRUCTIONS))
+                .solve(Day05Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9001)
                 .build(), SAMPLE_RESULT_TASK_2);
     }
 
     @Test
     public void testTask1() {
-        testTask1(Day5Task.builder(readInput())
-                .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9000)
+        testTask1(Day05Task.builder(readInput())
+                .solve(Day05Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9000)
                 .build());
     }
 
     @Test
     public void testTask2() {
-        testTask2(Day5Task.builder(readInput())
-                .solve(Day5Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9001)
+        testTask2(Day05Task.builder(readInput())
+                .solve(Day05Task.Solution.FIND_TOP_CRATES_CRATE_MOVER_9001)
                 .build());
     }
 
-    private Day5Task.Input readInput() {
+    private Day05Task.Input readInput() {
         Scanner scanner = openFile(this.getClass(), INPUT_FILE);
-        return new Day5Task.Input(readCrates(scanner), readInstructions(scanner));
+        return new Day05Task.Input(readCrates(scanner), readInstructions(scanner));
     }
 
     private Map<Integer, List<Character>> readCrates(Scanner scanner) {

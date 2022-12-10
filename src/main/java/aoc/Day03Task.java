@@ -7,18 +7,18 @@ import java.util.Set;
 
 import aoc.base.Task;
 
-public class Day3Task extends Task<List<String>, Integer> {
+public class Day03Task extends Task<List<String>, Integer> {
 
-    private Day3Task(List<String> input) {
+    private Day03Task(List<String> input) {
         super(input);
         this.result = 0;
     }
 
-    public enum Solution implements SolutionStrategy<Day3Task> {
+    public enum Solution implements SolutionStrategy<Day03Task> {
 
         FIND_DUPLICATE_ITEMS_SUM {
             @Override
-            public void solve(Day3Task task) {
+            public void solve(Day03Task task) {
                 task.result = task.input.stream()
                         .mapToInt(rucksack -> findMatchingItemValue(List.of(
                                 rucksack.substring(0, rucksack.length() / 2),
@@ -28,7 +28,7 @@ public class Day3Task extends Task<List<String>, Integer> {
         },
         FIND_BADGES_SUM {
             @Override
-            public void solve(Day3Task task) {
+            public void solve(Day03Task task) {
                 for (int index = 0; index < task.input.size(); index += 3) {
                     task.result += findMatchingItemValue(List.of(
                             task.input.get(index),
@@ -63,7 +63,7 @@ public class Day3Task extends Task<List<String>, Integer> {
         }
     }
 
-    public static Builder<Day3Task> builder(List<String> input) {
-        return new Builder<>(() -> new Day3Task(input));
+    public static Builder<Day03Task> builder(List<String> input) {
+        return new Builder<>(() -> new Day03Task(input));
     }
 }

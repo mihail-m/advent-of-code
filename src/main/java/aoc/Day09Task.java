@@ -8,25 +8,25 @@ import java.util.Set;
 
 import aoc.base.Task;
 
-public class Day9Task extends Task<List<String>, Integer> {
+public class Day09Task extends Task<List<String>, Integer> {
 
-    protected Day9Task(List<String> input) {
+    protected Day09Task(List<String> input) {
         super(input);
         this.result = 0;
     }
 
-    public enum Solution implements SolutionStrategy<Day9Task> {
+    public enum Solution implements SolutionStrategy<Day09Task> {
 
         FIND_VISITED_CELLS_COUNT_SIZE_2 {
             @Override
-            public void solve(Day9Task task) {
+            public void solve(Day09Task task) {
                 task.result = simulate(task.input, 2);
             }
         },
 
         FIND_VISITED_CELLS_COUNT_SIZE_10 {
             @Override
-            public void solve(Day9Task task) {
+            public void solve(Day09Task task) {
                 task.result = simulate(task.input, 10);
             }
         };
@@ -86,7 +86,7 @@ public class Day9Task extends Task<List<String>, Integer> {
         }
     }
 
-    public static Builder<Day9Task> builder(List<String> input) {
-        return new Builder<>(() -> new Day9Task(input));
+    public static Builder<Day09Task> builder(List<String> input) {
+        return new Builder<>(() -> new Day09Task(input));
     }
 }

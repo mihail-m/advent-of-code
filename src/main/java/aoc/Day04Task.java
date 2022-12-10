@@ -4,18 +4,18 @@ import java.util.List;
 
 import aoc.base.Task;
 
-public class Day4Task extends Task<List<List<Integer>>, Integer> {
+public class Day04Task extends Task<List<List<Integer>>, Integer> {
 
-    private Day4Task(List<List<Integer>> input) {
+    private Day04Task(List<List<Integer>> input) {
         super(input);
         this.result = 0;
     }
 
-    public enum Solution implements SolutionStrategy<Day4Task> {
+    public enum Solution implements SolutionStrategy<Day04Task> {
 
         FIND_COMPLETELY_COVERED_INTERVALS_COUNT {
             @Override
-            public void solve(Day4Task task) {
+            public void solve(Day04Task task) {
                 task.result = (int) task.input.stream()
                         .filter(Solution::intervalCompletelyCovered)
                         .count();
@@ -24,7 +24,7 @@ public class Day4Task extends Task<List<List<Integer>>, Integer> {
 
         FIND_OVERLAPPING_INTERVALS_COUNT {
             @Override
-            public void solve(Day4Task task) {
+            public void solve(Day04Task task) {
                 task.result = (int) task.input.stream()
                         .filter(Solution::intervalOverlap)
                         .count();
@@ -48,7 +48,7 @@ public class Day4Task extends Task<List<List<Integer>>, Integer> {
         }
     }
 
-    public static Builder<Day4Task> builder(List<List<Integer>> input) {
-        return new Builder<>(() -> new Day4Task(input));
+    public static Builder<Day04Task> builder(List<List<Integer>> input) {
+        return new Builder<>(() -> new Day04Task(input));
     }
 }

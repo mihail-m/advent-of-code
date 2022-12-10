@@ -9,18 +9,18 @@ import java.util.Set;
 
 import aoc.base.Task;
 
-public class Day7Task extends Task<List<String>, Long> {
+public class Day07Task extends Task<List<String>, Long> {
 
-    private Day7Task(List<String> input) {
+    private Day07Task(List<String> input) {
         super(input);
         this.result = 0L;
     }
 
-    public enum Solution implements SolutionStrategy<Day7Task> {
+    public enum Solution implements SolutionStrategy<Day07Task> {
 
         FIND_DIRECTORIES_UNDER_100000_SIZE_SUM {
             @Override
-            public void solve(Day7Task task) {
+            public void solve(Day07Task task) {
                 buildFileSystemTree(task.input)
                         .forEach((__, dir) -> {
                             if (dir.size <= 100000L) {
@@ -32,7 +32,7 @@ public class Day7Task extends Task<List<String>, Long> {
 
         FIND_DIRECTORY_TO_DELETE {
             @Override
-            public void solve(Day7Task task) {
+            public void solve(Day07Task task) {
                 Map<String, Dir> fileSystem = buildFileSystemTree(task.input);
 
                 long totalTakenSpace = fileSystem.get(ROOT_DIR).size;
@@ -150,7 +150,7 @@ public class Day7Task extends Task<List<String>, Long> {
         }
     }
 
-    public static Builder<Day7Task> builder(List<String> consoleOutput) {
-        return new Builder<>(() -> new Day7Task(consoleOutput));
+    public static Builder<Day07Task> builder(List<String> consoleOutput) {
+        return new Builder<>(() -> new Day07Task(consoleOutput));
     }
 }

@@ -4,18 +4,18 @@ import java.util.List;
 
 import aoc.base.Task;
 
-public class Day1Task extends Task<List<List<Integer>>, Integer> {
+public class Day01Task extends Task<List<List<Integer>>, Integer> {
 
-    private Day1Task(List<List<Integer>> input) {
+    private Day01Task(List<List<Integer>> input) {
         super(input);
         this.result = 0;
     }
 
-    public enum Solution implements SolutionStrategy<Day1Task> {
+    public enum Solution implements SolutionStrategy<Day01Task> {
 
         FIND_MAX_CALORIE_COUNT {
             @Override
-            public void solve(Day1Task task) {
+            public void solve(Day01Task task) {
                 task.result = task.input.stream()
                         .mapToInt(foodList -> foodList.stream()
                                 .mapToInt(food -> food)
@@ -27,7 +27,7 @@ public class Day1Task extends Task<List<List<Integer>>, Integer> {
 
         FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS {
             @Override
-            public void solve(Day1Task task) {
+            public void solve(Day01Task task) {
                 task.result = task.input.stream()
                         .mapToInt(foodList -> foodList.stream()
                                 .mapToInt(food -> food)
@@ -40,7 +40,7 @@ public class Day1Task extends Task<List<List<Integer>>, Integer> {
         }
     }
 
-    public static Builder<Day1Task> builder(List<List<Integer>> input) {
-        return new Builder<>(() -> new Day1Task(input));
+    public static Builder<Day01Task> builder(List<List<Integer>> input) {
+        return new Builder<>(() -> new Day01Task(input));
     }
 }

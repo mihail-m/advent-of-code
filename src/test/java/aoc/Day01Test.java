@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import aoc.util.BaseTest;
 
-public class Day1Test extends BaseTest<Day1Task, Integer> {
+public class Day01Test extends BaseTest<Day01Task, Integer> {
 
     private static final List<List<Integer>> SAMPLE_INPUT = List.of(
             List.of(1000, 2000, 3000),
@@ -27,29 +27,29 @@ public class Day1Test extends BaseTest<Day1Task, Integer> {
 
     @Test
     public void sampleTestTask1() {
-        sampleTestTask1(Day1Task.builder(SAMPLE_INPUT)
-                .solve(Day1Task.Solution.FIND_MAX_CALORIE_COUNT)
+        sampleTestTask1(Day01Task.builder(SAMPLE_INPUT)
+                .solve(Day01Task.Solution.FIND_MAX_CALORIE_COUNT)
                 .build(), SAMPLE_RESULT_TASK_1);
     }
 
     @Test
     public void sampleTestTask2() {
-        sampleTestTask2(Day1Task.builder(SAMPLE_INPUT)
-                .solve(Day1Task.Solution.FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS)
+        sampleTestTask2(Day01Task.builder(SAMPLE_INPUT)
+                .solve(Day01Task.Solution.FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS)
                 .build(), SAMPLE_RESULT_TASK_2);
     }
 
     @Test
     public void testTask1() {
-        testTask1(Day1Task.builder(readInput())
-                .solve(Day1Task.Solution.FIND_MAX_CALORIE_COUNT)
+        testTask1(Day01Task.builder(readInput())
+                .solve(Day01Task.Solution.FIND_MAX_CALORIE_COUNT)
                 .build());
     }
 
     @Test
     public void testTask2() {
-        testTask2(Day1Task.builder(readInput())
-                .solve(Day1Task.Solution.FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS)
+        testTask2(Day01Task.builder(readInput())
+                .solve(Day01Task.Solution.FIND_SUM_OF_3_HIGHEST_CALORIE_COUNTS)
                 .build());
     }
 

@@ -5,18 +5,18 @@ import java.util.Map;
 
 import aoc.base.Task;
 
-public class Day2Task extends Task<List<String>, Integer> {
+public class Day02Task extends Task<List<String>, Integer> {
 
-    private Day2Task(List<String> input) {
+    private Day02Task(List<String> input) {
         super(input);
         this.result = 0;
     }
 
-    public enum Solution implements SolutionStrategy<Day2Task> {
+    public enum Solution implements SolutionStrategy<Day02Task> {
 
         FIND_GUESSED_STRATEGY_SCORE {
             @Override
-            public void solve(Day2Task task) {
+            public void solve(Day02Task task) {
                 Map<String, Integer> matchPoints = Map.of(
                         "A X", 4,
                         "A Y", 8,
@@ -37,7 +37,7 @@ public class Day2Task extends Task<List<String>, Integer> {
 
         FIND_ACTUAL_STRATEGY_SCORE {
             @Override
-            public void solve(Day2Task task) {
+            public void solve(Day02Task task) {
                 Map<String, Integer> matchPoints = Map.of(
                         "A X", 3,
                         "A Y", 4,
@@ -57,7 +57,7 @@ public class Day2Task extends Task<List<String>, Integer> {
         }
     }
 
-    public static Builder<Day2Task> builder(List<String> input) {
-        return new Builder<>(() -> new Day2Task(input));
+    public static Builder<Day02Task> builder(List<String> input) {
+        return new Builder<>(() -> new Day02Task(input));
     }
 }

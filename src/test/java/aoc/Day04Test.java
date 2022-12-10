@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import aoc.util.BaseTest;
 
-public class Day4Test extends BaseTest<Day4Task, Integer> {
+public class Day04Test extends BaseTest<Day04Task, Integer> {
 
     static final List<List<Integer>> SAMPLE_INPUT = List.of(
             List.of(2, 4, 6 ,8),
@@ -26,29 +26,29 @@ public class Day4Test extends BaseTest<Day4Task, Integer> {
 
     @Test
     public void sampleTestTask1() {
-        sampleTestTask1(Day4Task.builder(SAMPLE_INPUT)
-                .solve(Day4Task.Solution.FIND_COMPLETELY_COVERED_INTERVALS_COUNT)
+        sampleTestTask1(Day04Task.builder(SAMPLE_INPUT)
+                .solve(Day04Task.Solution.FIND_COMPLETELY_COVERED_INTERVALS_COUNT)
                 .build(), SAMPLE_RESULT_TASK_1);
     }
 
     @Test
     public void sampleTestTask2() {
-        sampleTestTask2(Day4Task.builder(SAMPLE_INPUT)
-                .solve(Day4Task.Solution.FIND_OVERLAPPING_INTERVALS_COUNT)
+        sampleTestTask2(Day04Task.builder(SAMPLE_INPUT)
+                .solve(Day04Task.Solution.FIND_OVERLAPPING_INTERVALS_COUNT)
                 .build(), SAMPLE_RESULT_TASK_2);
     }
 
     @Test
     public void testTask1() {
-        testTask1(Day4Task.builder(readInput())
-                .solve(Day4Task.Solution.FIND_COMPLETELY_COVERED_INTERVALS_COUNT)
+        testTask1(Day04Task.builder(readInput())
+                .solve(Day04Task.Solution.FIND_COMPLETELY_COVERED_INTERVALS_COUNT)
                 .build());
     }
 
     @Test
     public void testTask2() {
-        testTask2(Day4Task.builder(readInput())
-                .solve(Day4Task.Solution.FIND_OVERLAPPING_INTERVALS_COUNT)
+        testTask2(Day04Task.builder(readInput())
+                .solve(Day04Task.Solution.FIND_OVERLAPPING_INTERVALS_COUNT)
                 .build());
     }
 
