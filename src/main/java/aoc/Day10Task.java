@@ -31,7 +31,7 @@ public class Day10Task extends Task<List<String>, String> {
             }
         },
 
-        RENDER_IMAGE {
+        FIND_RENDERED_IMAGE {
             @Override
             public void solve(Day10Task task) {
                 StringBuilder[] res = new StringBuilder[6];

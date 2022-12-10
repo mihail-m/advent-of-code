@@ -29,7 +29,7 @@ public class Day10Test extends BaseTest<Day10Task, String> {
     @Test
     public void sampleTestTask2() {
         sampleTestTask1(Day10Task.builder(readInput(SAMPLE_INPUT_FILE))
-                .solve(Day10Task.Solution.RENDER_IMAGE)
+                .solve(Day10Task.Solution.FIND_RENDERED_IMAGE)
                 .build(), SAMPLE_RESULT_2);
     }
 
@@ -43,7 +43,7 @@ public class Day10Test extends BaseTest<Day10Task, String> {
     @Test
     public void testTask2() {
         testTask2(Day10Task.builder(readInput(INPUT_FILE))
-                .solve(Day10Task.Solution.RENDER_IMAGE)
+                .solve(Day10Task.Solution.FIND_RENDERED_IMAGE)
                 .build());
     }
 }
