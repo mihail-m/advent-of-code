@@ -1,9 +1,11 @@
-package aoc.base;
+package aoc;
 
 import java.util.Comparator;
 import java.util.Deque;
 import java.util.List;
 import java.util.function.Function;
+
+import aoc.base.Task;
 
 public class Day11Task extends Task<List<Day11Task.Monkey>, Long> {
 
@@ -18,6 +20,10 @@ public class Day11Task extends Task<List<Day11Task.Monkey>, Long> {
     }
 
     public static class Monkey {
+
+        public static final String ADD = "+";
+        public static final String MULTIPLY = "*";
+
         public static Long MOD = 1L;
 
         public Deque<Long> items;
@@ -25,6 +31,21 @@ public class Day11Task extends Task<List<Day11Task.Monkey>, Long> {
         public Function<Long, Integer> test;
 
         public long inspections = 0;
+
+        public static Function<Long, Long> getOperation(String num, String op) {
+            return (item) -> {
+                if (num.isEmpty()) {
+                    return item * item;
+                }
+                return op.equals(MULTIPLY)
+                        ? item * Long.parseLong(num)
+                        : item + Long.parseLong(num);
+            };
+        }
+
+        public static Function<Long, Integer> getTest(long num, int ifTrue, int ifFalse) {
+            return (item) -> item % num == 0 ? ifTrue : ifFalse;
+        }
     }
 
     public enum Solution implements SolutionStrategy<Day11Task> {

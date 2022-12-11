@@ -1,6 +1,10 @@
 package aoc;
 
-import static aoc.util.TestUtil.*;
+import static aoc.Day11Task.Monkey;
+
+import static aoc.util.TestUtil.INPUT_FILE;
+import static aoc.util.TestUtil.SAMPLE_INPUT_FILE;
+import static aoc.util.TestUtil.openFile;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -10,7 +14,6 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
-import aoc.base.Day11Task;
 import aoc.util.BaseTest;
 
 public class Day11Test extends BaseTest<Day11Task, Long> {
@@ -47,11 +50,11 @@ public class Day11Test extends BaseTest<Day11Task, Long> {
                 .build());
     }
 
-    private List<Day11Task.Monkey> parseInput(String fileName) {
+    private List<Monkey> parseInput(String fileName) {
         Scanner scanner = openFile(this.getClass(), fileName);
 
-        List<Day11Task.Monkey> input = new ArrayList<>();
-        Day11Task.Monkey monkey = new Day11Task.Monkey();
+        List<Monkey> input = new ArrayList<>();
+        Monkey monkey = new Day11Task.Monkey();
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
@@ -76,7 +79,7 @@ public class Day11Test extends BaseTest<Day11Task, Long> {
         return input;
     }
 
-    private void startingOp(Day11Task.Monkey monkey, String line) {
+    private void startingOp(Monkey monkey, String line) {
         line = line.replaceAll("[^0-9]", " ").trim();
 
         monkey.items = new ArrayDeque<>(Arrays
@@ -86,28 +89,21 @@ public class Day11Test extends BaseTest<Day11Task, Long> {
                 .toList());
     }
 
-    private void operationOp(Day11Task.Monkey monkey, String line) {
-        String op = line.contains("*") ? "*" : "+";
+    private void operationOp(Monkey monkey, String line) {
+        String op = line.contains(Monkey.ADD) ? Monkey.ADD : Monkey.MULTIPLY;
         String num = line.replaceAll("[^0-9]", " ").trim();
 
-        monkey.operation = (item) -> {
-            if (num.isEmpty()) {
-                return item * item;
-            }
-            return op.equals("*")
-                    ? item * Long.parseLong(num)
-                    : item + Long.parseLong(num);
-        };
+        monkey.operation = Monkey.getOperation(num, op);
     }
 
-    private void testOp(Scanner scanner, List<Day11Task.Monkey> input, Day11Task.Monkey monkey, String line) {
-        Long num = Long.parseLong(line.replaceAll("[^0-9]", " ").trim());
+    private void testOp(Scanner scanner, List<Monkey> input, Monkey monkey, String line) {
+        long num = Long.parseLong(line.replaceAll("[^0-9]", " ").trim());
         int ifTrue = Integer.parseInt(scanner.nextLine().replaceAll("[^0-9]", " ").trim());
         int ifFalse = Integer.parseInt(scanner.nextLine().replaceAll("[^0-9]", " ").trim());
 
-        monkey.test = (item) -> item % num == 0 ? ifTrue : ifFalse;
+        monkey.test = Monkey.getTest(num, ifTrue, ifFalse);
 
         input.add(monkey);
-        Day11Task.Monkey.MOD *= num;
+        Monkey.MOD *= num;
     }
 }
