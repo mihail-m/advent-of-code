@@ -25,7 +25,7 @@ public class Day11Test extends BaseTest<Day11Task, Long> {
     @Test
     public void sampleTestTask1() {
         sampleTestTask1(Day11Task.builder(parseInput(SAMPLE_INPUT_FILE))
-                .solve(Day11Task.Solution.FIND_MONKEY_BUSINESS)
+                .solve(Day11Task.Solution.FIND_MONKEY_BUSINESS_20)
                 .build(), SAMPLE_RESULT_1);
     }
 
@@ -39,7 +39,7 @@ public class Day11Test extends BaseTest<Day11Task, Long> {
     @Test
     public void testTask1() {
         testTask1(Day11Task.builder(parseInput(INPUT_FILE))
-                .solve(Day11Task.Solution.FIND_MONKEY_BUSINESS)
+                .solve(Day11Task.Solution.FIND_MONKEY_BUSINESS_20)
                 .build());
     }
 
@@ -80,10 +80,8 @@ public class Day11Test extends BaseTest<Day11Task, Long> {
     }
 
     private void startingOp(Monkey monkey, String line) {
-        line = line.replaceAll("[^0-9]", " ").trim();
-
         monkey.items = new ArrayDeque<>(Arrays
-                .stream(line.split(" "))
+                .stream(getOnlyNumbers(line).split(" "))
                 .filter(str->!str.isEmpty())
                 .map(Long::parseLong)
                 .toList());
@@ -91,20 +89,24 @@ public class Day11Test extends BaseTest<Day11Task, Long> {
 
     private void operationOp(Monkey monkey, String line) {
         String op = line.contains(Monkey.ADD) ? Monkey.ADD : Monkey.MULTIPLY;
-        String num = line.replaceAll("[^0-9]", " ").trim();
+        String num = getOnlyNumbers(line);
 
         monkey.operation = Monkey.getOperation(num, op);
     }
 
     private void testOp(Scanner scanner, List<Monkey> input, Monkey monkey, String line) {
-        long num = Long.parseLong(line.replaceAll("[^0-9]", " ").trim());
-        int ifTrue = Integer.parseInt(scanner.nextLine().replaceAll("[^0-9]", " ").trim());
-        int ifFalse = Integer.parseInt(scanner.nextLine().replaceAll("[^0-9]", " ").trim());
+        long num = Long.parseLong(getOnlyNumbers(line));
+        int ifTrue = Integer.parseInt(getOnlyNumbers(scanner.nextLine()));
+        int ifFalse = Integer.parseInt(getOnlyNumbers(scanner.nextLine()));
 
         monkey.test = Monkey.getTest(num, ifTrue, ifFalse);
 
         Monkey.addToMOD(num);
 
         input.add(monkey);
+    }
+
+    private String getOnlyNumbers(String str) {
+        return str.replaceAll("[^0-9]", " ").trim();
     }
 }

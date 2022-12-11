@@ -1,5 +1,7 @@
 package aoc;
 
+import static aoc.Day11Task.Monkey;
+
 import java.util.Comparator;
 import java.util.Deque;
 import java.util.List;
@@ -7,14 +9,14 @@ import java.util.function.Function;
 
 import aoc.base.Task;
 
-public class Day11Task extends Task<List<Day11Task.Monkey>, Long> {
+public class Day11Task extends Task<List<Monkey>, Long> {
 
     public static final String MONKEY = "Monkey";
     public static final String STARTING = "Starting";
     public static final String OPERATION = "Operation";
     public static final String TEST = "Test";
 
-    private Day11Task(List<Day11Task.Monkey> input) {
+    private Day11Task(List<Monkey> input) {
         super(input);
         this.result = 0L;
     }
@@ -54,7 +56,7 @@ public class Day11Task extends Task<List<Day11Task.Monkey>, Long> {
 
     public enum Solution implements SolutionStrategy<Day11Task> {
 
-        FIND_MONKEY_BUSINESS {
+        FIND_MONKEY_BUSINESS_20 {
             @Override
             public void solve(Day11Task task) {
                 task.result = getMonkeyBusiness(task.input, 20, (item) -> item / 3);
