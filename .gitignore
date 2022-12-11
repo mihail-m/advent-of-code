@@ -1,0 +1,4 @@
+.idea/
+target/
+# Do not upload input files!
+src/test/java/input/files/*/input.txt
