@@ -32,6 +32,10 @@ public class Day11Task extends Task<List<Day11Task.Monkey>, Long> {
 
         public long inspections = 0;
 
+        public static void addToMOD(Long num) {
+            MOD *= num;
+        }
+
         public static Function<Long, Long> getOperation(String num, String op) {
             return (item) -> {
                 if (num.isEmpty()) {

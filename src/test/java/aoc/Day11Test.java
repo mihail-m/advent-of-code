@@ -103,7 +103,8 @@ public class Day11Test extends BaseTest<Day11Task, Long> {
 
         monkey.test = Monkey.getTest(num, ifTrue, ifFalse);
 
+        Monkey.addToMOD(num);
+
         input.add(monkey);
-        Monkey.MOD *= num;
     }
 }
