@@ -61,7 +61,12 @@ public class TestUtil {
 
         System.out.println("Posting result for validation...");
 
-        HttpPost request = new HttpPost(String.format(AOC_URL_ANSWER, getDay(caller)));
+        String day = getDay(caller);
+        if (day.charAt(0) == '0') {
+            day = day.substring(1);
+        }
+
+        HttpPost request = new HttpPost(String.format(AOC_URL_ANSWER, day));
         addHeaders(request);
 
         List<NameValuePair> params = new ArrayList<>();
@@ -101,14 +106,27 @@ public class TestUtil {
 
         System.out.println("Retrieving input information...");
 
-        HttpGet request = new HttpGet(String.format(AOC_URL_INPUT, getDay(caller)));
+        String day = getDay(caller);
+        if (day.charAt(0) == '0') {
+            day = day.substring(1);
+        }
+
+        HttpGet request = new HttpGet(String.format(AOC_URL_INPUT, day));
         addHeaders(request);
 
         writeFile(getDay(caller), getRequestResponse(request));
     }
 
     private static void writeFile(String day, String input) {
-        String fileLocation = TESTS_LOCATION_PREFIX + "day" + day + "/" + INPUT_FILE;
+        String dir = TESTS_LOCATION_PREFIX + "day" + day;
+        File fileDir = new File(dir);
+        if (!fileDir.exists()) {
+            if (!fileDir.mkdirs()) {
+                System.out.println("Input file directory NOT created.");
+            }
+        }
+
+        String fileLocation = dir + "/" + INPUT_FILE;
         try {
             Files.write(Paths.get(fileLocation), input.getBytes(), StandardOpenOption.CREATE);
             System.out.println("Input file saved at: " + fileLocation);
