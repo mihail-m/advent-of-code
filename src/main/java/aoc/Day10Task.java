@@ -7,7 +7,7 @@ import aoc.base.Task;
 
 public class Day10Task extends Task<List<String>, String> {
 
-    protected Day10Task(List<String> input) {
+    private Day10Task(List<String> input) {
         super(input);
         this.result = "";
     }
