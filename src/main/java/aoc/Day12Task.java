@@ -126,7 +126,7 @@ public class Day12Task extends Task<List<String>, Integer> {
                 }
             }
 
-            public int row, col;
+            public final int row, col;
 
             public Node(int r, int c) {
                 this.row = r;
