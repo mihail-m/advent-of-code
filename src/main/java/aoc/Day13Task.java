@@ -52,15 +52,15 @@ public class Day13Task extends Task<List<String>, Integer> {
 
         private static class PacketData implements Comparable<PacketData> {
 
-            public final Object packets;
+            private final Object packetData;
 
             public PacketData(String input) {
-                this.packets = buildList(input, new AtomicInteger(1));
+                this.packetData = buildList(input, new AtomicInteger(1));
             }
 
             @Override
             public int compareTo(PacketData pd) {
-                return compare(this.packets, pd.packets);
+                return compare(this.packetData, pd.packetData);
             }
 
             private Object buildList(String input, AtomicInteger i) {
