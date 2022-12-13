@@ -20,10 +20,10 @@ public class Day13Task extends Task<List<String>, Integer> {
             public void solve(Day13Task task) {
                 int pairIndex = 1;
                 for (int i = 0; i < task.input.size(); i += 3) {
-                    Object left = buildList(task.input.get(i), new AtomicInteger(1));
-                    Object right = buildList(task.input.get(i + 1), new AtomicInteger(1));
+                    PacketData left = new PacketData(task.input.get(i));
+                    PacketData right = new PacketData(task.input.get(i + 1));
 
-                    task.result += check(left, right) < 0 ? pairIndex : 0;
+                    task.result += left.compareTo(right) < 0 ? pairIndex : 0;
 
                     pairIndex++;
                 }
@@ -33,100 +33,96 @@ public class Day13Task extends Task<List<String>, Integer> {
         FIND_DIVIDER_PACKETS {
             @Override
             public void solve(Day13Task task) {
-                List<Object> packets = new ArrayList<>();
+                List<PacketData> packets = new ArrayList<>();
+                packets.add(DIVIDER_1);
+                packets.add(DIVIDER_2);
 
-                Object div1Obj = buildList(DIVIDER_1, new AtomicInteger(1));
-                packets.add(div1Obj);
+                task.input.stream()
+                        .filter(line -> !line.isEmpty())
+                        .forEach(line -> packets.add(new PacketData(line)));
 
-                Object div2Obj = buildList(DIVIDER_2, new AtomicInteger(1));
-                packets.add(div2Obj);
+                packets.sort(PacketData::compareTo);
 
-                for (String line : task.input) {
-                    if (!line.isEmpty()) {
-                        packets.add(buildList(line, new AtomicInteger(1)));
-                    }
-                }
-
-                packets.sort(Solution::check);
-
-                int div1Index = 0;
-                int div2Index = 0;
-
-                for (int i = 0; i < packets.size(); i++) {
-                    if (packets.get(i) == div1Obj) {
-                        div1Index = i + 1;
-                    }
-                    if (packets.get(i) == div2Obj) {
-                        div2Index = i + 1;
-                    }
-                }
-
-                task.result = div1Index * div2Index;
+                task.result = (packets.indexOf(DIVIDER_1) + 1) * (packets.indexOf(DIVIDER_2) + 1);
             }
         };
 
-        private static final String DIVIDER_1 = "[[2]]";
-        private static final String DIVIDER_2 = "[[6]]";
+        private static final PacketData DIVIDER_1 = new PacketData("[[2]]");
+        private static final PacketData DIVIDER_2 = new PacketData("[[6]]");
 
-        Object buildList(String input, AtomicInteger i) {
-            List<Object> list = new ArrayList<>();
+        private static class PacketData implements Comparable<PacketData> {
 
-            while (i.get() < input.length()) {
-                char c = input.charAt(i.getAndIncrement());
-                if (c == '[') {
-                    Object o = buildList(input, i);
-                    list.add(o);
-                }
-                else if (c == ']') {
-                    break;
-                }
-                else if (c != ',') {
-                    int num = nextInt(input, i.get() - 1);
-                    list.add(num);
-                    i.addAndGet(String.valueOf(num).length() - 1);
-                }
+            public final Object packets;
+
+            public PacketData(String input) {
+                this.packets = buildList(input, new AtomicInteger(1));
             }
 
-            return list;
-        }
-
-        private static int nextInt(String input, int i) {
-            int num = 0;
-            while (i < input.length() && Character.isDigit(input.charAt(i))) {
-                num = num * 10 + (input.charAt(i) - '0');
-                i++;
+            @Override
+            public int compareTo(PacketData pd) {
+                return compare(this.packets, pd.packets);
             }
-            return num;
-        }
 
-        @SuppressWarnings("unchecked")
-        private static int check(Object l1, Object l2) {
-            if (l1 instanceof Integer) {
+            private Object buildList(String input, AtomicInteger i) {
+                List<Object> list = new ArrayList<>();
+
+                while (i.get() < input.length()) {
+                    char c = input.charAt(i.getAndIncrement());
+                    if (c == '[') {
+                        Object o = buildList(input, i);
+                        list.add(o);
+                    }
+                    else if (c == ']') {
+                        break;
+                    }
+                    else if (c != ',') {
+                        int num = nextInt(input, i.get() - 1);
+                        list.add(num);
+                        i.addAndGet(String.valueOf(num).length() - 1);
+                    }
+                }
+
+                return list;
+            }
+
+            private int nextInt(String input, int i) {
+                int num = 0;
+                while (i < input.length() && Character.isDigit(input.charAt(i))) {
+                    num = num * 10 + (input.charAt(i) - '0');
+                    i++;
+                }
+                return num;
+            }
+
+            @SuppressWarnings("unchecked")
+            private int compare(Object l1, Object l2) {
+                if (l1 instanceof Integer) {
+                    if (l2 instanceof Integer) {
+                        return ((Integer) l1).compareTo((Integer) l2);
+                    }
+                    return compare(List.of(l1), l2);
+                }
+
                 if (l2 instanceof Integer) {
-                    return ((Integer) l1).compareTo((Integer) l2);
+                    return compare(l1, List.of(l2));
                 }
-                return check(List.of(l1), l2);
-            }
 
-            if (l2 instanceof Integer) {
-                return check(l1, List.of(l2));
-            }
+                int i = 0;
+                int j = 0;
 
-            int i = 0;
-            int j = 0;
+                List<Object> left = (List<Object>) l1;
+                List<Object> right = (List<Object>) l2;
 
-            List<Object> left = (List<Object>) l1;
-            List<Object> right = (List<Object>) l2;
-
-            while (i < left.size() && j < right.size()) {
-                int checkVal = check(left.get(i++), right.get(j++));
-                if (checkVal == 0) {
-                    continue;
+                while (i < left.size() && j < right.size()) {
+                    int checkVal = compare(left.get(i++), right.get(j++));
+                    if (checkVal == 0) {
+                        continue;
+                    }
+                    return checkVal;
                 }
-                return checkVal;
-            }
 
-            return Integer.compare(left.size(), right.size());
+                return Integer.compare(left.size(), right.size());
+            }
         }
     }
 
