@@ -103,9 +103,9 @@ public class Day15Task extends Task<List<Day15Task.Sensor>, Long> {
                 }
             }
 
-            private static boolean check(Day15Task task, Sensor sensor, int range, int step) {
-                int x = sensor.x + range;
-                int y = sensor.y + step;
+            private static boolean check(Day15Task task, Sensor sensor, int addX, int addY) {
+                int x = sensor.x + addX;
+                int y = sensor.y + addY;
 
                 if (x < 0 || y < 0 || x > task.targetY * 2 || y > task.targetY * 2) {
                     return false;
