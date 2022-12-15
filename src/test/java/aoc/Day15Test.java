@@ -20,7 +20,7 @@ public class Day15Test extends BaseTest<Day15Task, Long> {
     @Test
     public void sampleTestTask1() {
         sampleTestTask1(Day15Task.builder(parseInput(SAMPLE_INPUT_FILE), 10)
-                .solve(Day15Task.Solution.FIND_NON_COVERED_CELLS_ROW_2000000)
+                .solve(Day15Task.Solution.FIND_NON_COVERED_CELLS_ROW)
                 .build(), SAMPLE_RESULT_1);
     }
 
@@ -34,7 +34,7 @@ public class Day15Test extends BaseTest<Day15Task, Long> {
     @Test
     public void testTask1() {
         testTask1(Day15Task.builder(parseInput(INPUT_FILE), 2_000_000)
-                .solve(Day15Task.Solution.FIND_NON_COVERED_CELLS_ROW_2000000)
+                .solve(Day15Task.Solution.FIND_NON_COVERED_CELLS_ROW)
                 .build());
     }
 

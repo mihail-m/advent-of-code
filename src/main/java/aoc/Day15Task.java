@@ -20,18 +20,26 @@ public class Day15Task extends Task<List<Day15Task.Sensor>, Long> {
 
     public enum Solution implements SolutionStrategy<Day15Task> {
 
-        FIND_NON_COVERED_CELLS_ROW_2000000 {
+        FIND_NON_COVERED_CELLS_ROW {
             @Override
             public void solve(Day15Task task) {
-                List<Integer[]> intervals = new ArrayList<>();
-                Set<Integer> beacons = new HashSet<>();
+                List<Integer[]> intervals = getIntervals(task.input, task.targetY);
 
-                task.input.forEach(sensor -> {
-                    if (sensor.beaconY == task.targetY) {
-                        beacons.add(sensor.beaconX);
+                intervals.sort((i1, i2) -> {
+                    if (Objects.equals(i1[0], i2[0])) {
+                        return Integer.compare(i1[1], i2[1]);
                     }
+                    return Integer.compare(i1[0], i2[0]);
+                });
 
-                    int rowRange = (sensor.range - Math.abs(sensor.y - task.targetY));
+                task.result = getBlockedCells(intervals) - getBeaconsOn(task.input, task.targetY);
+            }
+
+            private static List<Integer[]> getIntervals(List<Sensor> sensors, int targetY) {
+                List<Integer[]> intervals = new ArrayList<>();
+
+                sensors.forEach(sensor -> {
+                    int rowRange = (sensor.range - Math.abs(sensor.y - targetY));
 
                     if (rowRange < 0) {
                         return;
@@ -43,29 +51,36 @@ public class Day15Task extends Task<List<Day15Task.Sensor>, Long> {
                     intervals.add(new Integer[]{from, to});
                 });
 
-                intervals.sort((i1, i2) -> {
-                    if (Objects.equals(i1[0], i2[0])) {
-                        return Integer.compare(i1[1], i2[1]);
-                    }
-                    return Integer.compare(i1[0], i2[0]);
-                });
+                return intervals;
+            }
 
+            private static long getBeaconsOn(List<Sensor> sensors, int targetY) {
+                return sensors.stream()
+                        .filter(s -> s.beaconY == targetY)
+                        .map(s -> s.beaconX)
+                        .distinct()
+                        .count();
+            }
+
+            private static long getBlockedCells(List<Integer[]> intervals) {
+                long result = 0L;
                 int to = intervals.get(0)[0] - 1;
+
                 for (Integer[] interval : intervals) {
                     if (to >= interval[1]) {
                         continue;
                     }
 
                     if (interval[0] > to) {
-                        task.result += (interval[1] - interval[0] + 1);
+                        result += (interval[1] - interval[0] + 1);
                     } else {
-                        task.result += interval[1] - to;
+                        result += interval[1] - to;
                     }
 
                     to = interval[1];
                 }
 
-                task.result -= beacons.size();
+                return result;
             }
         },
 
@@ -93,14 +108,16 @@ public class Day15Task extends Task<List<Day15Task.Sensor>, Long> {
             private static boolean check(Day15Task task, Sensor sensor, int range, int step) {
                 int x = sensor.x + range;
                 int y = sensor.y + step;
+
                 if (x < 0 || y < 0 || x > task.targetY * 2 || y > task.targetY * 2) {
                     return false;
                 }
+
                 if (task.input.stream().noneMatch(s -> s.dist(x, y) <= s.range)) {
-                    System.out.println(x + " " + y);
                     task.result = ((long) x) * 4_000_000L + y;
                     return true;
                 }
+
                 return false;
             }
         }
@@ -112,7 +129,6 @@ public class Day15Task extends Task<List<Day15Task.Sensor>, Long> {
         int range;
 
         public Sensor(int x, int y, int beaconX, int beaconY) {
-            //System.out.println(x+" "+y+" "+beaconX+" "+beaconY);
             this.x = x;
             this.y = y;
             this.beaconX = beaconX;
