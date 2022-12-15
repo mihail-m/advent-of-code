@@ -27,11 +27,8 @@ public class Day15Task extends Task<List<Day15Task.Sensor>, Long> {
 
             private static List<Integer[]> getIntervals(Day15Task task) {
                 return task.input.stream()
-                        .filter(s -> (s.range - Math.abs(s.y - task.targetY)) < 0)
-                        .map(s -> {
-                            int range = s.range - Math.abs(s.y - task.targetY);
-                            return new Integer[]{s.x - range, s.x + range};
-                        })
+                        .filter(s -> (s.range - Math.abs(s.y - task.targetY)) >= 0)
+                        .map(s -> getInterval(s, task.targetY))
                         .sorted(Comparator.comparingInt(i -> i[0]))
                         .collect(Collectors.toList());
             }
@@ -47,10 +44,17 @@ public class Day15Task extends Task<List<Day15Task.Sensor>, Long> {
             private static long getBlockedCells(List<Integer[]> intervals) {
                 AtomicInteger to = new AtomicInteger(intervals.get(0)[0] - 1);
                 return intervals.stream()
-                        .mapToInt(interval -> to.get() < interval[1]
-                                ? (interval[1] - Math.max(to.getAndSet(interval[1]), interval[0] + 1))
-                                : 0)
+                        .mapToInt(interval -> getCells(interval, to))
                         .sum();
+            }
+
+            private static int getCells(Integer[] i, AtomicInteger to) {
+                return (to.get() >= i[1]) ? 0 : 1 + i[1] - Math.max(to.getAndSet(i[1] + 1), i[0]);
+            }
+
+            private static Integer[] getInterval(Sensor s, int targetY) {
+                int range = s.range - Math.abs(s.y - targetY);
+                return new Integer[]{s.x - range, s.x + range};
             }
         },
 
