@@ -2,6 +2,7 @@ package aoc;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 import aoc.base.Task;
@@ -44,18 +45,12 @@ public class Day15Task extends Task<List<Day15Task.Sensor>, Long> {
             }
 
             private static long getBlockedCells(List<Integer[]> intervals) {
-                long result = 0L;
-                int to = intervals.get(0)[0] - 1;
-
-                for (Integer[] interval : intervals) {
-                    if (to >= interval[1]) {
-                        continue;
-                    }
-                    result += (interval[1] - Math.max(to, interval[0] + 1));
-                    to = interval[1];
-                }
-
-                return result;
+                AtomicInteger to = new AtomicInteger(intervals.get(0)[0] - 1);
+                return intervals.stream()
+                        .mapToInt(interval -> to.get() < interval[1]
+                                ? (interval[1] - Math.max(to.getAndSet(interval[1]), interval[0] + 1))
+                                : 0)
+                        .sum();
             }
         },
 
@@ -79,8 +74,10 @@ public class Day15Task extends Task<List<Day15Task.Sensor>, Long> {
             }
 
             private static boolean check(Day15Task task, int x, int y) {
-                if (x < 0 || y < 0 || x > task.targetY * 2 || y > task.targetY * 2
-                        || task.input.stream().anyMatch(s -> s.dist(x, y) <= s.range)) {
+                if (x < 0 || y < 0 || x > task.targetY * 2 || y > task.targetY * 2) {
+                    return false;
+                }
+                if (task.input.stream().anyMatch(s -> s.dist(x, y) <= s.range)) {
                     return false;
                 }
                 task.result = ((long) x) * 4_000_000L + y;
