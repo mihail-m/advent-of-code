@@ -1,8 +1,8 @@
 package aoc;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 import aoc.base.Task;
 
@@ -21,40 +21,23 @@ public class Day15Task extends Task<List<Day15Task.Sensor>, Long> {
         FIND_NON_COVERED_CELLS_ROW {
             @Override
             public void solve(Day15Task task) {
-                List<Integer[]> intervals = getIntervals(task.input, task.targetY);
-
-                intervals.sort((i1, i2) -> {
-                    if (Objects.equals(i1[0], i2[0])) {
-                        return Integer.compare(i1[1], i2[1]);
-                    }
-                    return Integer.compare(i1[0], i2[0]);
-                });
-
-                task.result = getBlockedCells(intervals) - getBeaconsOn(task.input, task.targetY);
+                task.result = getBlockedCells(getIntervals(task)) - getBeaconsOn(task);
             }
 
-            private static List<Integer[]> getIntervals(List<Sensor> sensors, int targetY) {
-                List<Integer[]> intervals = new ArrayList<>();
-
-                sensors.forEach(sensor -> {
-                    int rowRange = (sensor.range - Math.abs(sensor.y - targetY));
-
-                    if (rowRange < 0) {
-                        return;
-                    }
-
-                    int from = sensor.x - rowRange;
-                    int to = sensor.x + rowRange;
-
-                    intervals.add(new Integer[]{from, to});
-                });
-
-                return intervals;
+            private static List<Integer[]> getIntervals(Day15Task task) {
+                return task.input.stream()
+                        .filter(s -> (s.range - Math.abs(s.y - task.targetY)) < 0)
+                        .map(s -> {
+                            int range = s.range - Math.abs(s.y - task.targetY);
+                            return new Integer[]{s.x - range, s.x + range};
+                        })
+                        .sorted(Comparator.comparingInt(i -> i[0]))
+                        .collect(Collectors.toList());
             }
 
-            private static long getBeaconsOn(List<Sensor> sensors, int targetY) {
-                return sensors.stream()
-                        .filter(s -> s.beaconY == targetY)
+            private static long getBeaconsOn(Day15Task task) {
+                return task.input.stream()
+                        .filter(s -> s.beaconY == task.targetY)
                         .map(s -> s.beaconX)
                         .distinct()
                         .count();
@@ -68,13 +51,7 @@ public class Day15Task extends Task<List<Day15Task.Sensor>, Long> {
                     if (to >= interval[1]) {
                         continue;
                     }
-
-                    if (interval[0] > to) {
-                        result += (interval[1] - interval[0] + 1);
-                    } else {
-                        result += interval[1] - to;
-                    }
-
+                    result += (interval[1] - Math.max(to, interval[0] + 1));
                     to = interval[1];
                 }
 
@@ -86,37 +63,28 @@ public class Day15Task extends Task<List<Day15Task.Sensor>, Long> {
             @Override
             public void solve(Day15Task task) {
                 for (Sensor sensor : task.input) {
-                    if (check(task, sensor, sensor.range + 1,0)
-                            || check(task, sensor, -sensor.range - 1,0)
-                            || check(task, sensor, 0,sensor.range + 1)
-                            || check(task, sensor, 0,-sensor.range - 1)) {
-                         return;
-                    }
-                    for (int step = 1; step <= sensor.range; step++) {
-                        if (check(task, sensor, sensor.range - step + 1, step)
-                                || check(task, sensor, sensor.range - step + 1, -step)
-                                || check(task, sensor, -sensor.range + step - 1, step)
-                                || check(task, sensor, -sensor.range + step -1, -step)) {
+                    for (int step = 0; step <= sensor.range + 1; step++) {
+                        if (check(task, sensor, step)) {
                             return;
                         }
                     }
                 }
             }
 
-            private static boolean check(Day15Task task, Sensor sensor, int addX, int addY) {
-                int x = sensor.x + addX;
-                int y = sensor.y + addY;
+            private static boolean check(Day15Task task, Sensor sensor, int step) {
+                return     check(task, sensor.x + sensor.range - step + 1, sensor.y + step)
+                        || check(task, sensor.x + sensor.range - step + 1, sensor.y - step)
+                        || check(task, sensor.x - sensor.range + step - 1, sensor.y + step)
+                        || check(task, sensor.x - sensor.range + step - 1, sensor.y - step);
+            }
 
-                if (x < 0 || y < 0 || x > task.targetY * 2 || y > task.targetY * 2) {
+            private static boolean check(Day15Task task, int x, int y) {
+                if (x < 0 || y < 0 || x > task.targetY * 2 || y > task.targetY * 2
+                        || task.input.stream().anyMatch(s -> s.dist(x, y) <= s.range)) {
                     return false;
                 }
-
-                if (task.input.stream().noneMatch(s -> s.dist(x, y) <= s.range)) {
-                    task.result = ((long) x) * 4_000_000L + y;
-                    return true;
-                }
-
-                return false;
+                task.result = ((long) x) * 4_000_000L + y;
+                return true;
             }
         }
     }
