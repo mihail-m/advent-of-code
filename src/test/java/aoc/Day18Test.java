@@ -37,7 +37,7 @@ public class Day18Test extends BaseTest<Day18Task, Integer> {
 
     @Test
     public void testTask2() {
-        testTask1(Day18Task.builder(parseInput(INPUT_FILE))
+        testTask2(Day18Task.builder(parseInput(INPUT_FILE))
                 .solve(Day18Task.Solution.FIND_OUTER_SURFACE_AREA)
                 .build());
     }
