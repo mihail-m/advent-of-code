@@ -1,4 +1,5 @@
-.idea/
-target/
+2022/.idea/
+2022/target/
 # Do not upload input files!
-src/test/java/input/files/*/input.txt
+2022/src/test/java/input/files/*/input.txt
+2023/*/input/input.txt
