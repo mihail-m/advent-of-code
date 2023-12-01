@@ -1,5 +1,6 @@
-2022/.idea/
-2022/target/
+.idea/
+target/
+.DS_Store
 # Do not upload input files!
 2022/src/test/java/input/files/*/input.txt
 2023/*/input/input.txt
